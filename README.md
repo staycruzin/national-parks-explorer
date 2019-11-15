@@ -18,3 +18,7 @@ Helps users obtain detailed information about each of the U.S. National Parks, w
 ## Site Map & User Flows
 ![Site Map and User Flows Diagram](https://i.imgur.com/kBzUAKO.png)
 
+## Wireframes
+### Home Screen
+![Wireframe for the Home Screen](https://imgur.com/8tWegnB.png)
+
