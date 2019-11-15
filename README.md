@@ -15,10 +15,13 @@ Helps users obtain detailed information about each of the U.S. National Parks, w
 - As an explorer, I want to see a picture of each National Park so I can get a visual preview of what each one looks like. 
 - As an explorer, I want to be notified of any alerts that may effect my visit to each of these parks so I can be prepared. 
 
-## Site Map & User Flows
+## Site Map & User Flows (MVP)
 ![Site Map and User Flows Diagram](https://i.imgur.com/kBzUAKO.png)
 
-## Wireframes
+## Wireframes (MVP)
 ### Home Screen
 ![Wireframe for the Home Screen](https://imgur.com/8tWegnB.png)
+
+### National Park Detail Screen
+![Wireframe for the Park Detail Screen](https://imgur.com/H3zEk3E.png)
 
