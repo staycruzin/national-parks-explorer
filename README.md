@@ -16,7 +16,7 @@ Helps users obtain detailed information about each of the U.S. National Parks, w
 - As an explorer, I want to be notified of any alerts that may effect my visit to each of these parks so I can be prepared. 
 
 ## Site Map & User Flows (MVP)
-![Site Map and User Flows Diagram](https://i.imgur.com/kBzUAKO.png)
+![Site Map and User Flows Diagram](https://imgur.com/2RwjTt3.png)
 
 ## Wireframes (MVP)
 ### Home Screen
