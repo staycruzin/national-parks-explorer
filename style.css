@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 18px;
+}
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+
+
+    text-align: center;
+
+    background-image: url(assets/hero-image-3.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hero-inner {
+    position: relative;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+}
+
+h1, h2 {
+    position: absolute;
+    color: white; 
+}
+
+h1 {
+    font-family: 'Major Mono Display', monospace;
+    font-size: 2.5rem;
+    top: 20px;
+}
+
+h2 {
+    width: 80%;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    bottom: 20px;
+}
+
+@media screen and (min-width: 375px) {
+    h1 {
+       font-size: 3.125rem; 
+    }
+    h2 {
+        font-size: 1.875rem;
+    }
+}
+
+@media (min-height: 800px) and (min-width: 375px) {
+    h1 {
+       top: 40px;
+    }
+    h2 {
+        bottom: 40px;
+    }
+}
+
