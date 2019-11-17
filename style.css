@@ -6,6 +6,7 @@
 
 body {
     font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .hero {
@@ -15,7 +16,7 @@ body {
 
     text-align: center;
 
-    background-image: url(assets/hero-image-3.jpg);
+    background-color: grey;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -23,29 +24,38 @@ body {
 }
 
 .hero-inner {
-    position: relative;
     height: inherit;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1, h2 {
     position: absolute;
-    color: white; 
+    color: black; 
 }
 
 h1 {
+    top: 20px;
     font-family: 'Major Mono Display', monospace;
     font-size: 2.5rem;
-    top: 20px;
 }
 
 h2 {
     width: 80%;
+    top: 50%;
     font-family: 'Merriweather', serif;
     font-weight: 400;
     font-size: 1.5rem;
-    bottom: 20px;
+}
+
+.home-content {
+    padding: 40px 20px;
+    background-color: lightgrey;
+}
+
+.parks-form {
+    margin-top: 20px;
 }
 
 @media screen and (min-width: 375px) {
@@ -61,8 +71,11 @@ h2 {
     h1 {
        top: 40px;
     }
-    h2 {
-        bottom: 40px;
-    }
 }
 
+@media screen and (min-width: 1024px) {
+    .home-content {
+        padding: 5% 20%;
+        background-color: lightgrey;
+    }
+}
