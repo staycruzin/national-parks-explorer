@@ -10,7 +10,7 @@ const NPS_API_KEY = 'xBRqVrGeEgzB8HiOJy82A69FLrhMQgd5FSX9fIH0';
 const HIKING_PROJECT_API_KEY = '7101314-2db36463e31e0bf91b2c49919876d9dc';
 const WEATHERBIT_API_KEY = '221b43c97f2b4875a8d27a00c7c7d105';
 
-// Need to implement error handling code in getParkDetail catch block instead of just a console log
+// Need to implement error handling code in all catch blocks instead of just a console log
 // Figure out a way to get rid of the duplicate "parseLatitudeAndLongitude" calls?
 
 function formatQueryParams(params) {
@@ -91,8 +91,52 @@ function getHikingTrails(latLong) {
         });
 }
 
+function formatDate(dateString) {
+    let dateArray = dateString.split('-');
+
+    return dateArray[1] + '/' +  dateArray[2] + '/' + dateArray[0];
+}
+
+function getDayOfWeek(dateString) {
+    const daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let day = new Date(formatDate(dateString));
+
+    return daysOfTheWeek[day.getDay()];
+}
+
 function displayWeather(responseJson) {
     console.log(responseJson);
+
+    $('.detail-content').append(`
+        <p><strong>Current Weather:</strong></p>
+        <div class="weather-forecast">
+            <div class="daily-weather">
+                <p><strong>${getDayOfWeek(responseJson.data[0].datetime)}</strong></p>
+                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[0].weather.icon}.png" alt="An image representing the weather on this day"/>
+                <p>${responseJson.data[0].max_temp}&#176; / ${responseJson.data[0].min_temp}&#176;</p>
+            </div>
+            <div class="daily-weather">
+                <p><strong>${getDayOfWeek(responseJson.data[1].datetime)}</strong></p>
+                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[1].weather.icon}.png" alt="An image representing the weather on this day"/>
+                <p>${responseJson.data[1].max_temp}&#176; / ${responseJson.data[1].min_temp}&#176;</p>
+            </div>
+            <div class="daily-weather">
+                <p><strong>${getDayOfWeek(responseJson.data[2].datetime)}</strong></p>
+                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[2].weather.icon}.png" alt="An image representing the weather on this day"/>
+                <p>${responseJson.data[2].max_temp}&#176; / ${responseJson.data[2].min_temp}&#176;</p>
+            </div>
+            <div class="daily-weather">
+                <p><strong>${getDayOfWeek(responseJson.data[3].datetime)}</strong></p>
+                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[3].weather.icon}.png" alt="An image representing the weather on this day"/>
+                <p>${responseJson.data[3].max_temp}&#176; / ${responseJson.data[3].min_temp}&#176;</p>
+            </div>
+            <div class="daily-weather">
+                <p><strong>${getDayOfWeek(responseJson.data[4].datetime)}</strong></p>
+                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[4].weather.icon}.png" alt="An image representing the weather on this day"/>
+                <p>${responseJson.data[4].max_temp}&#176; / ${responseJson.data[4].min_temp}&#176;</p>
+            </div>
+        </div>
+    `);
 }
 
 function getParkWeather(latLong) {
@@ -130,6 +174,21 @@ function getParkWeather(latLong) {
 
 function displayParkDetail(responseJson) {
     console.log(responseJson);
+
+    $('.hero-home-screen').addClass('hidden');
+    $('.home-content').addClass('hidden');
+    $('.heading-detail-screen').removeClass('hidden');
+    $('.detail-content').removeClass('hidden');
+    
+    $('.detail-content').html(
+        `
+        <h2>${responseJson.data[0].fullName}</h2>
+        <img class="park-image" src="assets/park-images/${responseJson.data[0].parkCode}.jpg" alt="A picture of ${responseJson.data[0].fullName}"/>
+        <p><strong>State(s):</strong> ${responseJson.data[0].states}</p>
+        <p><strong>Description</strong>: ${responseJson.data[0].description}</p>
+        <p><strong>Directions Info</strong>: ${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
+        <p><strong>Weather Info</strong>: ${responseJson.data[0].weatherInfo}</p>   `
+    );
 }
 
 function getParkDetail(parkCodeSelected) {

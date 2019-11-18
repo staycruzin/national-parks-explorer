@@ -10,26 +10,33 @@
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Open+Sans|Merriweather:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Open+Sans:400,700|Merriweather:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="hero">
+    <section class="hero-home-screen">
         <div class="hero-inner">
             <h1>National Parks Explorer</h1>
             <h2>Where will you go next?</h2>
         </div>
     </section>
 
+    <section class="heading-detail-screen hidden">
+        <h1>National Parks Explorer</h1>
+    </section>
+
     <main>
         <section class="home-content">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut tellus elementum sagittis vitae et leo duis. Mattis molestie a iaculis at erat pellentesque. Diam maecenas sed enim ut. Tincidunt id aliquet risus feugiat in ante metus. Tempus quam pellentesque nec nam. Ultrices sagittis orci a scelerisque. Sed libero enim sed faucibus turpis in eu. Urna neque viverra justo nec ultrices. Ac ut consequat semper viverra nam libero justo.</p>
             <form class="js-parks-form parks-form">
-            <label id="form-label" for="parks-list">Find Your Park:</label>
+            <label for="parks-list">Find Your Park:</label>
             <select id="parks-list" name="parks-list">
                 <option value=""></option>
             </select>
             <input type="submit" value="Explore">
             </form>
+        </section>
+
+        <section class="detail-content hidden">
         </section>
     </main>
 

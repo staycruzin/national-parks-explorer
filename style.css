@@ -9,7 +9,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-.hero {
+.hero-home-screen {
     width: 100vw;
     height: 100vh;
 
@@ -30,9 +30,8 @@ body {
     align-items: center;
 }
 
-h1, h2 {
+h1, .hero-home-screen h2 {
     position: absolute;
-    color: black; 
 }
 
 h1 {
@@ -41,12 +40,19 @@ h1 {
     font-size: 2.5rem;
 }
 
-h2 {
-    width: 80%;
-    top: 50%;
+h2, .detail-content h2 {
     font-family: 'Merriweather', serif;
     font-weight: 400;
     font-size: 1.5rem;
+}
+
+.hero-home-screen h2 {
+    width: 80%;
+    top: 50%;
+}
+
+.detail-content h2 {
+    font-weight: 700;
 }
 
 .home-content {
@@ -62,12 +68,70 @@ h2 {
 }
 
 .select2 {
-    width: 100% !important;
+    max-width: 100% !important;
     margin: 5px 0 !important;
 }
 
 .parks-form input {
     padding: 5px;
+}
+
+.heading-detail-screen {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    height: 64px;
+}
+
+.heading-detail-screen h1 {
+    position: relative;
+    font-size: 1.3rem;
+    top: 0;
+    margin: 0;
+}
+
+.detail-content {
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.park-image {
+    display: block;
+    margin-top: 10px;
+}
+
+.weather-forecast {
+    width: 100%;
+}
+
+.daily-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;  
+}
+
+.weather-icon {
+    display: block;
+    margin: auto;
+    width: 70px;
+    height: 70px;
+}
+
+.detail-content p {
+    margin-top: 10px;
+}
+
+img {
+    max-width: 100%;
 }
 
 .hidden {
@@ -92,10 +156,15 @@ h2 {
 @media screen and (min-width: 1024px) {
     .home-content {
         padding: 5% 20%;
-        background-color: lightgrey;
     }
 
     .select2 {
-        width: 50% !important;
+        max-width: 50% !important;
+    }
+
+    .weather-forecast {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
     }
 }
