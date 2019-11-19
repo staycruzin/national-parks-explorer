@@ -277,16 +277,13 @@ footer {
         margin: 0 !important;
     }
 
-    #search input {
-        display: none;
-    }
-
     .detail-content {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1max-content 1fr 1fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
+        background-color: white;
     }
 
     .detail-screen-heading h1 {
@@ -295,16 +292,10 @@ footer {
 
     .detail-content h2 {
         grid-row: 1;
-        text-align: left;
+        grid-column: span 2;
+        text-align: center;
+        padding-bottom: 20px;
         font-size: 2.5rem;
-    }
-
-    .detail-section {
-        background-color: white;
-    }
-    
-    .detail-section:nth-child(odd) {
-        background-color: white;   
     }
 
     .basic-details {
@@ -322,17 +313,20 @@ footer {
     .park-image-container {
         grid-column: 1;
         grid-row: 2;
+        background-color: lightgrey;   
     }
 
     .weather-details {
         grid-column: 1;
-        grid-row: 3;       
+        grid-row: 3;  
+        background-color: white;     
     }
 
 
     .directions-and-more {
         grid-column: 2;
-        grid-row: 3;      
+        grid-row: 3; 
+        background-color: white !important;      
     }
 
     .home-content {

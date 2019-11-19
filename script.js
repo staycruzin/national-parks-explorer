@@ -60,6 +60,11 @@ function getCampgrounds(currentParkCode) {
 
 function displayHikingTrails(responseJson) {
     console.log(responseJson);
+
+    ('main').append(`
+        <section class="hiking-content">
+        <section>
+    `);
 }
 
 function getHikingTrails(latLong) {
@@ -317,8 +322,7 @@ function watchForms() {
       }
     });
 
-    $('.js-parks-form-detail').submit(event => {
-        event.preventDefault();
+    $('.js-parks-form-detail').change(function() {
         const parkCodeSelected = $("#parks-list-detail").val();
   
         if (parkCodeSelected !== "") {
