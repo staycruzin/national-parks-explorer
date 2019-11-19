@@ -11,6 +11,8 @@ const HIKING_PROJECT_API_KEY = '7101314-2db36463e31e0bf91b2c49919876d9dc';
 const WEATHERBIT_API_KEY = '221b43c97f2b4875a8d27a00c7c7d105';
 
 let viewportWidth = window.innerWidth;
+let latLong;
+let currentParkCode;
 
 // Need to implement error handling code in all catch blocks instead of just a console log
 // Figure out a way to get rid of the duplicate "parseLatitudeAndLongitude" calls?
@@ -58,13 +60,21 @@ function getCampgrounds(currentParkCode) {
         });
 }
 
+function campgroundsButtonClicked() {
+    $('body').on('click', '.js-camp-button', function() {
+        getCampgrounds(currentParkCode);
+    });
+}
+
 function displayHikingTrails(responseJson) {
     console.log(responseJson);
 
-    ('main').append(`
+    /*
+    $('main').append(`
         <section class="hiking-content">
         <section>
     `);
+    */
 }
 
 function getHikingTrails(latLong) {
@@ -75,6 +85,7 @@ function getHikingTrails(latLong) {
     const params = {
         lat: latitude,
         lon: longitude,
+        maxDistance: 50,
         key: HIKING_PROJECT_API_KEY
     }
 
@@ -96,6 +107,12 @@ function getHikingTrails(latLong) {
         .catch(error => {
             console.log(error.message);
         });
+}
+
+function hikingTrailsButtonClicked() {
+    $('body').on('click', '.js-hike-button', function() {
+        getHikingTrails(latLong);
+    });
 }
 
 function formatDate(dateString) {
@@ -217,8 +234,8 @@ function displayParkDetail(responseJson) {
                 <h3>Directions Information</h3>
                 <p>${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
                 <div class="buttons-container">
-                    <button class="detail-button" type="button">Campgrounds</button>
-                    <button class="detail-button" type="button">Hiking Trails</button>
+                    <button class="js-camp-button detail-button" type="button">Campgrounds</button>
+                    <button class="js-hike-button detail-button" type="button">Hiking Trails</button>
                 </div>
             </section>
         </section>  
@@ -226,6 +243,8 @@ function displayParkDetail(responseJson) {
 }
 
 function getParkDetail(parkCodeSelected) {
+    currentParkCode = parkCodeSelected;
+
     const params = {
         parkCode: parkCodeSelected,
         api_key: NPS_API_KEY
@@ -233,7 +252,6 @@ function getParkDetail(parkCodeSelected) {
 
     const queryString = formatQueryParams(params);
     const url = NPS_URL + 'parks?' + queryString;
-    let latLong;
 
     console.log(url);
 
@@ -377,6 +395,8 @@ function onPageLoad() {
     closeMenuClicked();
     clickedOffNav();
     watchForms();
+    hikingTrailsButtonClicked();
+    campgroundsButtonClicked();
 }
 
 $(onPageLoad);

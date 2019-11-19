@@ -166,6 +166,10 @@ footer {
     margin-bottom: 20px;
 }
 
+.park-image-container {
+    margin: auto;
+}
+
 .park-image {
     display: block;
     border-radius: 8px;
@@ -311,6 +315,7 @@ footer {
     }
 
     .park-image-container {
+        margin: 0;
         grid-column: 1;
         grid-row: 2;
         background-color: lightgrey;   
