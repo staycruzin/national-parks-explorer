@@ -98,7 +98,7 @@ function formatDate(dateString) {
 }
 
 function getDayOfWeek(dateString) {
-    const daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let day = new Date(formatDate(dateString));
 
     return daysOfTheWeek[day.getDay()];
@@ -107,33 +107,36 @@ function getDayOfWeek(dateString) {
 function displayWeather(responseJson) {
     console.log(responseJson);
 
-    $('.detail-content').append(`
-        <p><strong>Current Weather:</strong></p>
+    $('.weather-details').prepend(`
+        
         <div class="weather-forecast">
-            <div class="daily-weather">
-                <p><strong>${getDayOfWeek(responseJson.data[0].datetime)}</strong></p>
-                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[0].weather.icon}.png" alt="An image representing the weather on this day"/>
-                <p>${responseJson.data[0].max_temp}&#176; / ${responseJson.data[0].min_temp}&#176;</p>
-            </div>
-            <div class="daily-weather">
-                <p><strong>${getDayOfWeek(responseJson.data[1].datetime)}</strong></p>
-                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[1].weather.icon}.png" alt="An image representing the weather on this day"/>
-                <p>${responseJson.data[1].max_temp}&#176; / ${responseJson.data[1].min_temp}&#176;</p>
-            </div>
-            <div class="daily-weather">
-                <p><strong>${getDayOfWeek(responseJson.data[2].datetime)}</strong></p>
-                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[2].weather.icon}.png" alt="An image representing the weather on this day"/>
-                <p>${responseJson.data[2].max_temp}&#176; / ${responseJson.data[2].min_temp}&#176;</p>
-            </div>
-            <div class="daily-weather">
-                <p><strong>${getDayOfWeek(responseJson.data[3].datetime)}</strong></p>
-                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[3].weather.icon}.png" alt="An image representing the weather on this day"/>
-                <p>${responseJson.data[3].max_temp}&#176; / ${responseJson.data[3].min_temp}&#176;</p>
-            </div>
-            <div class="daily-weather">
-                <p><strong>${getDayOfWeek(responseJson.data[4].datetime)}</strong></p>
-                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[4].weather.icon}.png" alt="An image representing the weather on this day"/>
-                <p>${responseJson.data[4].max_temp}&#176; / ${responseJson.data[4].min_temp}&#176;</p>
+            <h3>Five Day Forecast</h3>
+            <div class="daily-weather-container">
+                <div class="daily-weather">
+                    <p><strong>${getDayOfWeek(responseJson.data[0].datetime)}</strong></p>
+                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[0].weather.icon}.png" alt="${responseJson.data[0].weather.description}"/>
+                    <p class="temps">${responseJson.data[0].max_temp}&#176; / ${responseJson.data[0].min_temp}&#176;</p>
+                </div>
+                <div class="daily-weather">
+                    <p><strong>${getDayOfWeek(responseJson.data[1].datetime)}</strong></p>
+                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[1].weather.icon}.png" alt="${responseJson.data[1].weather.description}"/>
+                    <p class="temps">${responseJson.data[1].max_temp}&#176; / ${responseJson.data[1].min_temp}&#176;</p>
+                </div>
+                <div class="daily-weather">
+                    <p><strong>${getDayOfWeek(responseJson.data[2].datetime)}</strong></p>
+                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[2].weather.icon}.png" alt="${responseJson.data[2].weather.description}"/>
+                    <p class="temps">${responseJson.data[2].max_temp}&#176; / ${responseJson.data[2].min_temp}&#176;</p>
+                </div>
+                <div class="daily-weather">
+                    <p><strong>${getDayOfWeek(responseJson.data[3].datetime)}</strong></p>
+                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[3].weather.icon}.png" alt="${responseJson.data[3].weather.description}"/>
+                    <p class="temps">${responseJson.data[3].max_temp}&#176; / ${responseJson.data[3].min_temp}&#176;</p>
+                </div>
+                <div class="daily-weather">
+                    <p><strong>${getDayOfWeek(responseJson.data[4].datetime)}</strong></p>
+                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[4].weather.icon}.png" alt="${responseJson.data[4].weather.description}"/>
+                    <p class="temps">${responseJson.data[4].max_temp}&#176; / ${responseJson.data[4].min_temp}&#176;</p>
+                </div>
             </div>
         </div>
     `);
@@ -180,15 +183,37 @@ function displayParkDetail(responseJson) {
     $('.heading-detail-screen').removeClass('hidden');
     $('.detail-content').removeClass('hidden');
     
-    $('.detail-content').html(
-        `
-        <h2>${responseJson.data[0].fullName}</h2>
-        <img class="park-image" src="assets/park-images/${responseJson.data[0].parkCode}.jpg" alt="A picture of ${responseJson.data[0].fullName}"/>
-        <p><strong>State(s):</strong> ${responseJson.data[0].states}</p>
-        <p><strong>Description</strong>: ${responseJson.data[0].description}</p>
-        <p><strong>Directions Info</strong>: ${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
-        <p><strong>Weather Info</strong>: ${responseJson.data[0].weatherInfo}</p>   `
-    );
+    $('main').append(`
+        <section class="detail-content">
+            <h2>${responseJson.data[0].fullName}</h2>
+            <section class="park-image detail-section">
+                <img class="park-image" src="assets/park-images/${responseJson.data[0].parkCode}.jpg" alt="A picture of ${responseJson.data[0].fullName}"/>
+            </section>
+
+            <section class="basic-details detail-section">
+                <h3>State(s)</h3>
+                <p>${responseJson.data[0].states}</p>
+                <br>
+                <h3>Description</h3>
+                <p>${responseJson.data[0].description}</p>
+            </section>
+
+            <section class="weather-details detail-section">
+                <br>
+                <h3>Weather Information</h3>
+                <p>${responseJson.data[0].weatherInfo}</p> 
+            </section>
+
+            <section class="directions-and-more detail-section">
+                <h3>Directions Information</h3>
+                <p>${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
+                <div class="buttons-container">
+                    <button class="detail-button" type="button">Campgrounds</button>
+                    <button class="detail-button" type="button">Hiking Trails</button>
+                </div>
+            </section>
+        </section>  
+    `);
 }
 
 function getParkDetail(parkCodeSelected) {
