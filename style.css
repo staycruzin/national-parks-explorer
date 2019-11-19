@@ -59,6 +59,7 @@ footer {
 
 .detail-content h2 {
     text-align: center;
+    padding: 0 20px;
     font-weight: 700;
 }
 
@@ -113,6 +114,10 @@ footer {
     display: flex;
     flex-direction: column;
     background-color: white;
+}
+
+.detail-content p {
+    word-wrap: break-word;
 }
 
 .detail-section {
@@ -178,10 +183,6 @@ footer {
 @media screen and (min-width: 375px) {
     h1 {
        font-size: 3.125rem; 
-    }
-
-    .heading-detail-screen h1 {
-        font-size: 1.3rem;
     }
 
     h2 {
