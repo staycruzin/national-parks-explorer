@@ -80,32 +80,65 @@ footer {
     align-items: center;
 }
 
+#search .parks-form {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
 .home-content .select2 {
     max-width: 100% !important;
     margin: 5px 0 !important;
 }
 
+#search .select2 {
+    width: 90% !important;
+    max-width: 90% !important;
+    margin: 5px 0 !important;
+}
+
+.parks-form label,
 .parks-form input {
     padding: 5px;
 }
 
-.heading-detail-screen {
+.detail-screen-heading {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;
     background-color: grey;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 0 5px;
+    padding: 0 15px;
     height: 64px;
 }
 
-.heading-detail-screen h1 {
-    position: relative;
-    font-size: 1.1rem;
-    top: 0;
+.menu-button {
+    cursor: pointer;
+    align-self: center;
+    outline: 0;
+    color: black;
+    font-size: 1.3rem;
+}
+
+#search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 63px;
+    left: 0;
+    width: 100%;
+    background: grey;
+}
+
+.detail-screen-heading h1 {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.9rem;
     margin: 0;
 }
 
@@ -127,6 +160,10 @@ footer {
 
 .detail-section:nth-child(odd) {
     background-color: lightgrey;   
+}
+
+.state {
+    margin-bottom: 20px;
 }
 
 .park-image {
@@ -185,6 +222,10 @@ footer {
        font-size: 3.125rem; 
     }
 
+    .detail-screen-heading h1 {
+        font-size: 1.1rem;
+    }
+
     h2 {
         font-size: 1.875rem;
     }
@@ -201,13 +242,97 @@ footer {
         font-size: 20px;
     }
 
-    .heading-detail-screen h1 {
+    .detail-screen-heading {
+        padding: 0 15px;
+        height: 64px;
+        justify-content: space-between;
+    }
+    
+    .detail-screen-heading h1 {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+    }
+
+    #search {
+        position: relative;
+        flex-direction: row;
+        top: 0;
+        width: max-content;
+    }
+
+    #search .parks-form {
+        flex-direction: row;
+        margin: 0;
+    }
+
+    #search label {
+        padding: 0;
+        width: 160px !important;
+    }
+
+    #search .select2 {
+        width: 350px !important;
+        margin: 0 !important;
+    }
+
+    #search input {
+        display: none;
+    }
+
+    .detail-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1max-content 1fr 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
+
+    .detail-screen-heading h1 {
         font-size: 2rem;
     }
 
     .detail-content h2 {
+        grid-row: 1;
         text-align: left;
         font-size: 2.5rem;
+    }
+
+    .detail-section {
+        background-color: white;
+    }
+    
+    .detail-section:nth-child(odd) {
+        background-color: white;   
+    }
+
+    .basic-details {
+        grid-column: 2;
+        grid-row: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .state {
+        margin-bottom: 0px;
+    }
+
+    .park-image-container {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .weather-details {
+        grid-column: 1;
+        grid-row: 3;       
+    }
+
+
+    .directions-and-more {
+        grid-column: 2;
+        grid-row: 3;      
     }
 
     .home-content {
@@ -218,12 +343,17 @@ footer {
         max-width: 50% !important;
     }
 
-    .weather-forecast {
-        width: 100%;
-    }
-
     .daily-weather-container {
         display: flex;
+        justify-content: space-between;
+    }
+
+    .daily-weather {
+        padding: 0px;
+    }
+
+    .weather-forecast .day {
+        font-size: 1rem;
     }
 
     .weather-forecast .temps {
