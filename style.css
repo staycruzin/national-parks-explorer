@@ -42,6 +42,7 @@ h1 {
 .hero-home-screen h2,
 .detail-content h2,
 .detail-content h3,
+.home-content h3,
 footer {
     font-family: 'Merriweather', serif;
 }
@@ -63,8 +64,12 @@ footer {
     font-weight: 700;
 }
 
+.detail-content h3,
+.home-content h3 {
+    font-size: 1.2rem;
+}
+
 .detail-content h3 {
-    font-size: 1.1rem;
     margin-bottom: 5px;
 }
 
@@ -83,6 +88,10 @@ footer {
 #search .parks-form {
     width: 100%;
     margin-bottom: 20px;
+}
+
+#search label {
+    display: none;
 }
 
 .home-content .select2 {
@@ -118,7 +127,6 @@ footer {
     align-self: center;
     outline: 0;
     color: black;
-    font-size: 1.3rem;
 }
 
 #search {
@@ -134,6 +142,7 @@ footer {
 
 .detail-screen-heading h1 {
     position: absolute;
+    width: 70%;
     text-align: center;
     left: 50%;
     top: 50%;
@@ -142,7 +151,9 @@ footer {
     margin: 0;
 }
 
-.detail-content {
+.detail-content,
+.hiking-content,
+.campground-content {
     padding-top: 85px;
     display: flex;
     flex-direction: column;
@@ -218,7 +229,7 @@ footer {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 @media screen and (min-width: 375px) {
@@ -254,6 +265,7 @@ footer {
     
     .detail-screen-heading h1 {
         position: relative;
+        width: auto;
         left: 0;
         top: 0;
         transform: none;
@@ -272,8 +284,8 @@ footer {
     }
 
     #search label {
-        padding: 0;
-        width: 160px !important;
+        display: inline;
+        padding: 2px 5px 0 0;
     }
 
     #search .select2 {
@@ -302,6 +314,9 @@ footer {
         font-size: 2.5rem;
     }
 
+    .detail-section h3 {
+        font-size: 1.3rem;
+    }
     .basic-details {
         grid-column: 2;
         grid-row: 2;
@@ -332,6 +347,12 @@ footer {
         grid-column: 2;
         grid-row: 3; 
         background-color: white !important;      
+    }
+
+    .back-button {
+        display: inline-block;
+        width: max-content;
+        padding: 5px;
     }
 
     .home-content {

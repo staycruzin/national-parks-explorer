@@ -12,6 +12,7 @@ const WEATHERBIT_API_KEY = '221b43c97f2b4875a8d27a00c7c7d105';
 
 let viewportWidth = window.innerWidth;
 let latLong;
+let currentParkName;
 let currentParkCode;
 
 // Need to implement error handling code in all catch blocks instead of just a console log
@@ -28,6 +29,15 @@ function parseLatitudeandLongitude(latLong) {
     let latLongParsed = latLong.replace(/lat:|long:/g, '').split(', ');
 
     return latLongParsed;
+}
+
+function backButtonClicked() {
+    
+    $( ".js-back-button" ).click(function() {
+        $('.hiking-content').addClass('hidden');
+        $('.campground-content').addClass('hidden');
+        $('.detail-content').removeClass('hidden');
+    });
 }
 
 function displayCampgrounds(responseJson) {
@@ -68,13 +78,24 @@ function campgroundsButtonClicked() {
 
 function displayHikingTrails(responseJson) {
     console.log(responseJson);
+    console.log(currentParkName);
 
-    /*
-    $('main').append(`
-        <section class="hiking-content">
-        <section>
-    `);
-    */
+    $('#hiking-content-header').html(`${currentParkName} Hiking Trails`);
+
+    $('#trails-list').empty();
+    
+    for (let i = 0; i < responseJson.trails.length; i++) {
+        $('#trails-list').append(`
+            <li>
+                <h3>${responseJson.trails[i].name}</h3>
+                <p>${responseJson.trails[i].summary}</p>
+                <p><a target="_blank" href="${responseJson.trails[i].url}">Click here to learn more!</a></p>
+            </li>
+        `);
+    }
+
+    $('.detail-content').addClass('hidden');
+    $('.hiking-content').removeClass('hidden');
 }
 
 function getHikingTrails(latLong) {
@@ -131,39 +152,15 @@ function getDayOfWeek(dateString) {
 function displayWeather(responseJson) {
     console.log(responseJson);
 
-    $('.weather-details').prepend(`
-        
-        <div class="weather-forecast">
-            <h3>Five Day Forecast</h3>
-            <div class="daily-weather-container">
-                <div class="daily-weather">
-                    <p class="day"><strong>${getDayOfWeek(responseJson.data[0].datetime)}</strong></p>
-                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[0].weather.icon}.png" alt="${responseJson.data[0].weather.description}"/>
-                    <p class="temps">${responseJson.data[0].max_temp}&#176; / ${responseJson.data[0].min_temp}&#176;</p>
-                </div>
-                <div class="daily-weather">
-                    <p class="day"><strong>${getDayOfWeek(responseJson.data[1].datetime)}</strong></p>
-                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[1].weather.icon}.png" alt="${responseJson.data[1].weather.description}"/>
-                    <p class="temps">${responseJson.data[1].max_temp}&#176; / ${responseJson.data[1].min_temp}&#176;</p>
-                </div>
-                <div class="daily-weather">
-                    <p class="day"><strong>${getDayOfWeek(responseJson.data[2].datetime)}</strong></p>
-                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[2].weather.icon}.png" alt="${responseJson.data[2].weather.description}"/>
-                    <p class="temps">${responseJson.data[2].max_temp}&#176; / ${responseJson.data[2].min_temp}&#176;</p>
-                </div>
-                <div class="daily-weather">
-                    <p class="day"><strong>${getDayOfWeek(responseJson.data[3].datetime)}</strong></p>
-                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[3].weather.icon}.png" alt="${responseJson.data[3].weather.description}"/>
-                    <p class="temps">${responseJson.data[3].max_temp}&#176; / ${responseJson.data[3].min_temp}&#176;</p>
-                </div>
-                <div class="daily-weather">
-                    <p class="day"><strong>${getDayOfWeek(responseJson.data[4].datetime)}</strong></p>
-                    <img class="weather-icon" src="assets/weather-icons/${responseJson.data[4].weather.icon}.png" alt="${responseJson.data[4].weather.description}"/>
-                    <p class="temps">${responseJson.data[4].max_temp}&#176; / ${responseJson.data[4].min_temp}&#176;</p>
-                </div>
+    for (let i = 0; i < responseJson.data.length; i++) {
+        $('.daily-weather-container').append(`
+            <div class="daily-weather">
+                <p class="day"><strong>${getDayOfWeek(responseJson.data[i].datetime)}</strong></p>
+                <img class="weather-icon" src="assets/weather-icons/${responseJson.data[i].weather.icon}.png" alt="${responseJson.data[i].weather.description}"/>
+                <p class="temps">${responseJson.data[i].max_temp}&#176; / ${responseJson.data[i].min_temp}&#176;</p>
             </div>
-        </div>
-    `);
+        `);
+    }
 }
 
 function getParkWeather(latLong) {
@@ -201,45 +198,51 @@ function getParkWeather(latLong) {
 
 function displayParkDetail(responseJson) {
     console.log(responseJson);
+    
+    $('.detail-content').append(`        
+        <h2>${responseJson.data[0].fullName}</h2>
+        <section class="park-image-container detail-section">
+            <img class="park-image" src="assets/park-images/${responseJson.data[0].parkCode}.jpg" alt="A picture of ${responseJson.data[0].fullName}"/>
+        </section>
+
+        <section class="basic-details detail-section">
+            <div class="state">
+                <h3>State(s)</h3>
+                <p>${responseJson.data[0].states}</p>
+            </div>
+            <div class="description">
+                <h3>Description</h3>
+                <p>${responseJson.data[0].description}</p>
+            </div>
+        </section>
+
+        <section class="weather-details detail-section">
+            <div class="weather-forecast">
+                <h3>Five Day Forecast</h3>
+                <div class="daily-weather-container detail-section">
+                </div>
+            </div>
+            <br>
+            <h3>Weather Information</h3>
+            <p>${responseJson.data[0].weatherInfo}</p> 
+        </section>
+
+        <section class="directions-and-more detail-section">
+            <h3>Directions Information</h3>
+            <p>${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
+            <div class="buttons-container">
+                <button class="js-camp-button detail-button" type="button">Campgrounds</button>
+                <button class="js-hike-button detail-button" type="button">Hiking Trails</button>
+            </div>
+        </section>
+    `);
 
     $('.hero-home-screen').addClass('hidden');
     $('.home-content').addClass('hidden');
+    $('.hiking-content').addClass('hidden');
+    $('.campground-content').addClass('hidden');
+    $('.detail-content').removeClass('hidden');
     $('.detail-screen-heading').removeClass('hidden');
-    
-    $('main').append(`
-        <section class="detail-content">
-            <h2>${responseJson.data[0].fullName}</h2>
-            <section class="park-image-container detail-section">
-                <img class="park-image" src="assets/park-images/${responseJson.data[0].parkCode}.jpg" alt="A picture of ${responseJson.data[0].fullName}"/>
-            </section>
-
-            <section class="basic-details detail-section">
-                <div class="state">
-                    <h3>State(s)</h3>
-                    <p>${responseJson.data[0].states}</p>
-                </div>
-                <div class="description">
-                    <h3>Description</h3>
-                    <p>${responseJson.data[0].description}</p>
-                </div>
-            </section>
-
-            <section class="weather-details detail-section">
-                <br>
-                <h3>Weather Information</h3>
-                <p>${responseJson.data[0].weatherInfo}</p> 
-            </section>
-
-            <section class="directions-and-more detail-section">
-                <h3>Directions Information</h3>
-                <p>${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
-                <div class="buttons-container">
-                    <button class="js-camp-button detail-button" type="button">Campgrounds</button>
-                    <button class="js-hike-button detail-button" type="button">Hiking Trails</button>
-                </div>
-            </section>
-        </section>  
-    `);
 }
 
 function getParkDetail(parkCodeSelected) {
@@ -264,6 +267,7 @@ function getParkDetail(parkCodeSelected) {
         })
         .then(responseJson => {
             latLong = responseJson.data[0].latLong;
+            currentParkName = responseJson.data[0].fullName;
 
             displayParkDetail(responseJson);
             getParkWeather(latLong);
@@ -350,7 +354,7 @@ function watchForms() {
                 $( ".open-button" ).show();
             }
 
-            $('.detail-content').remove();
+            $('.detail-content').empty();
             getParkDetail(parkCodeSelected);
         }
       });
@@ -397,6 +401,7 @@ function onPageLoad() {
     watchForms();
     hikingTrailsButtonClicked();
     campgroundsButtonClicked();
+    backButtonClicked()
 }
 
 $(onPageLoad);

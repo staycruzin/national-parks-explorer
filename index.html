@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="normalize.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Open+Sans:400,700|Merriweather:400,700&display=swap" rel="stylesheet">
 </head>
@@ -21,14 +22,14 @@
     </section>
 
     <section class="detail-screen-heading hidden">
-        <span class="menu-button open-button" role="button" tabindex="0" aria-expanded="false" aria-controls="search">&#9776;</span>
-        <span class="menu-button close-button" role="button" tabindex="0" aria-expanded="true" aria-controls="search">&#10005;</span>
+        <span class="menu-button open-button" role="button" tabindex="0" aria-expanded="false" aria-controls="search"><i class="fas fa-search-location fa-lg"></i></span>
+        <span class="menu-button close-button" role="button" tabindex="0" aria-expanded="true" aria-controls="search"><i class="fas fa-times fa-lg"></i></span>
 
         <h1>National Parks Explorer</h1>
 
         <nav id="search" class="search">
             <form class="js-parks-form-detail parks-form">
-                <label for="parks-list-detail">Find A New Park:</label>
+                <label for="parks-list-detail"><i class="fas fa-search-location fa-lg"></i></label>
                 <select id="parks-list-detail" name="parks-list-detail">
                 <option value=""></option>
                 </select>
@@ -40,13 +41,23 @@
         <section class="home-content">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut tellus elementum sagittis vitae et leo duis. Mattis molestie a iaculis at erat pellentesque. Diam maecenas sed enim ut. Tincidunt id aliquet risus feugiat in ante metus. Tempus quam pellentesque nec nam. Ultrices sagittis orci a scelerisque. Sed libero enim sed faucibus turpis in eu. Urna neque viverra justo nec ultrices. Ac ut consequat semper viverra nam libero justo.</p>
             <form class="js-parks-form-home parks-form">
-            <label for="parks-list-home">Find Your Park:</label>
+            <label for="parks-list-home"><h3>Find Your Park</h3></label>
             <select id="parks-list-home" name="parks-list-home">
                 <option value=""></option>
             </select>
             <input type="submit" value="Explore">
             </form>
         </section>
+
+        <section class="detail-content hidden"></section>
+
+        <section class="hiking-content hidden">
+            <h2 id="hiking-content-header"></h2>
+            <button class="js-back-button back-button" type="button">Back</button>
+            <ul id="trails-list"></ul>
+        </section>
+
+        <section class="campground-content hidden"></section>
     </main>
 
     <footer>&copy; 2019 Anthony Cruz</footer>
