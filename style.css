@@ -43,12 +43,16 @@ h1 {
 .detail-content h2,
 .detail-content h3,
 .home-content h3,
+.hiking-content h2,
+.campground-content h2
 footer {
     font-family: 'Merriweather', serif;
 }
 
 .hero-home-screen h2,
-.detail-content h2 {
+.detail-content h2, 
+.hiking-content h2,
+.campground-content h2 {
     font-size: 1.5rem;
 }
 
@@ -160,22 +164,47 @@ footer {
 
 .hiking-content,
 .campground-content {
+    min-height: -webkit-calc(100vh - 64px);
+    min-height: expression(100vh - 64px);
+    min-height: -moz-calc(100vh - 64px);
+    min-height: -o-calc(100vh - 64px);
     min-height: calc(100vh - 64px);
-    padding: 85px 20px;
+
+    padding: 85px 0;
     display: flex;
     flex-direction: column;
     background-color: white;
 }
 
+.hiking-content li,
+.campground-content li{
+    background-color: white;   
+}
+
+.hiking-content li:nth-child(odd),
+.campground-content li:nth-child(odd) {
+    background-color: lightgrey;   
+}
+
 .hiking-content h2,
 .campground-content h2 {
     text-align: center;
+    margin: 0 10px 20px 10px;
 } 
 
 .hiking-content li,
 .campground-content li {
-    padding: 20px 0;
+    text-align: center;
+    padding: 20px 5%;
     list-style-type: none;
+}
+
+#trails-list p {
+    margin: 10px 0;
+}
+
+#campgrounds-list p {
+    margin-top: 10px;
 }
 
 .center-h3 {
@@ -186,6 +215,7 @@ footer {
     margin-left: auto;
     margin-right: auto;
     width: max-content;
+    margin-top: 20px;
     padding: 5px;
 }
 
@@ -214,6 +244,14 @@ footer {
 
 .weather-forecast .temps {
     font-size: 0.8rem;
+}
+
+.temps .high {
+    color: #878787;
+}
+
+.temps .low {
+    color: #bababa;
 }
 
 .daily-weather-container {
@@ -267,7 +305,9 @@ footer {
        font-size: 3.125rem; 
     }
 
-    h2 {
+    h2,
+    .hiking-content h2,
+    .campground-content h2 {
         font-size: 1.875rem;
     }
 }
@@ -279,6 +319,16 @@ footer {
 }
 
 @media screen and (min-width: 700px) {
+    .detail-screen-heading h1 {
+        font-size: 1.5rem;
+    }
+
+    .detail-content h2,
+    .hiking-content h2,
+    .campground-content h2 {
+        font-size: 2rem;
+    }
+
     #search .select2 {
         width: 50% !important;
         max-width: 50% !important;
@@ -290,7 +340,13 @@ footer {
 
     .hiking-content,
     .campground-content {
-        padding: 85px 10%;
+        padding: 85px 0;
+    }
+
+    .hiking-content li,
+    .campground-content li {
+        text-align: center;
+        padding: 20px 10%;
     }
 
     .daily-weather-container {
@@ -361,6 +417,8 @@ footer {
     }
 
     .detail-content {
+        margin: auto;
+        width: 90%;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1max-content 1fr 1fr;
@@ -384,7 +442,7 @@ footer {
     }
 
     .detail-section h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .detail-section {
@@ -397,6 +455,7 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+        border-top-right-radius: 8px; 
     }
 
     .state {
@@ -407,13 +466,16 @@ footer {
         margin: 0;
         grid-column: 1;
         grid-row: 2;
-        background-color: lightgrey;   
+        background-color: lightgrey; 
+        border-top-left-radius: 8px; 
     }
 
     .weather-details {
         grid-column: 1;
         grid-row: 3;  
-        background-color: white;     
+        background-color: white;
+        margin-bottom: 115px;
+        border-bottom-left-radius: 8px;     
     }
 
     .daily-weather-container {
@@ -421,10 +483,16 @@ footer {
         padding: 0;
     }
 
+    .weather-forecast .temps {
+        font-size: 0.9rem;
+    }
+
     .directions-and-more {
         grid-column: 2;
         grid-row: 3; 
-        background-color: white !important;      
+        background-color: white !important;  
+        margin-bottom: 115px;  
+        border-bottom-right-radius: 8px;       
     }
 
     .home-content {
@@ -439,14 +507,26 @@ footer {
         font-size: 1rem;
     }
 
-    .weather-forecast .temps {
-        font-size: 0.9rem;
-    }
-
     .hiking-content,
     .campground-content {
-        padding: 85px 20%;
+        padding: 85px 25%;
+        background-color: transparent;
     }
+
+    .hiking-content h2,
+    .campground-content h2 {
+        color: black;
+        font-size: 2.5rem;
+    }
+
+    .hiking-content li,
+    .campground-content li {
+        margin: 20px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+
 }
 
 @media screen and (min-width: 1600px) {
@@ -455,9 +535,5 @@ footer {
         width: 80%;
     }
 
-    .hiking-content,
-    .campground-content {
-        margin: auto;
-        width: 80%;
-    }
+
 }

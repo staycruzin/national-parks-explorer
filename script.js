@@ -118,7 +118,7 @@ function displayHikingTrails(responseJson) {
             <li>
                 <h3>${responseJson.trails[i].name}</h3>
                 <p>${responseJson.trails[i].summary}</p>
-                <p><a target="_blank" href="${responseJson.trails[i].url}">Click here to learn more!</a></p>
+                <a target="_blank" href="${responseJson.trails[i].url}">Click here to learn more!</a>
             </li>
         `);
     }
@@ -186,7 +186,7 @@ function displayWeather(responseJson) {
             <div class="daily-weather">
                 <p class="day"><strong>${getDayOfWeek(responseJson.data[i].datetime)}</strong></p>
                 <img class="weather-icon" src="assets/weather-icons/${responseJson.data[i].weather.icon}.png" alt="${responseJson.data[i].weather.description}"/>
-                <p class="temps">${responseJson.data[i].max_temp}&#176; / ${responseJson.data[i].min_temp}&#176;</p>
+                <p class="temps"><span class="high">${responseJson.data[i].max_temp}&#176;</span> <span class="low">${responseJson.data[i].min_temp}&#176;</span></p>
             </div>
         `);
     }
