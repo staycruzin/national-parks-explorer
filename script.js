@@ -42,6 +42,29 @@ function backButtonClicked() {
 
 function displayCampgrounds(responseJson) {
     console.log(responseJson);
+
+    $('#camping-content-header').html(`${currentParkName} Campgrounds`);
+    $('#campgrounds-list').empty();
+
+    if (responseJson.data.length === 0) {
+        $('#campgrounds-list').append(`
+        <li>
+            <h3 class="center-h3">No campgrounds found!</h3>
+        </li>
+    `);     
+    }
+    
+    for (let i = 0; i < responseJson.data.length; i++) {
+        $('#campgrounds-list').append(`
+            <li>
+                <h3>${responseJson.data[i].name}</h3>
+                <p>${responseJson.data[i].description}</p>
+            </li>
+        `);
+    }
+
+    $('.detail-content').addClass('hidden');
+    $('.campground-content').removeClass('hidden');
 }
 
 function getCampgrounds(currentParkCode) {
@@ -78,11 +101,17 @@ function campgroundsButtonClicked() {
 
 function displayHikingTrails(responseJson) {
     console.log(responseJson);
-    console.log(currentParkName);
 
     $('#hiking-content-header').html(`${currentParkName} Hiking Trails`);
-
     $('#trails-list').empty();
+
+    if (responseJson.trails.length === 0) {
+        $('#trails-list').append(`
+        <li>
+            <h3 class="center-h3">No hiking trails found!</h3>
+        </li>
+    `);     
+    }
     
     for (let i = 0; i < responseJson.trails.length; i++) {
         $('#trails-list').append(`
@@ -277,54 +306,10 @@ function getParkDetail(parkCodeSelected) {
         });
 }
 
-// Sets the viewportWidth whenever the viewport is resized.
-function setViewportWidth() {
-     viewportWidth = window.innerWidth;
-}
-
-// Adjusts the nav bar based on the viewPort width.
-function setNavBar() {
-     if (viewportWidth <= 1024) {
-          $(".open-button").show();
-          $(".close-button").hide();
-          $(".search").hide();
-     } else {
-          $(".search").show();
-          $(".open-button").hide();
-          $(".close-button").hide();
-     }
-}
-
-// Listens for viewport resize events and adjusts the nav bar and the viewportWidth accordingly.
-function viewportResized() {
-     window.addEventListener('resize', function () {
-          setViewportWidth();
-          setNavBar();
-     });
-}
-
-// Expands the nav when the open menu button is clicked.
-function openMenuClicked() {
-     $( ".open-button" ).click(function() {
-          $( ".search" ).slideToggle( "slow");
-          $( ".open-button" ).hide();
-          $( ".close-button" ).show();
-     });
-}
-
-// Collapses the nav when the close menu button is clicked.
-function closeMenuClicked() {
-     $( ".close-button" ).click(function() {
-          $( ".search" ).slideToggle( "slow");
-          $( ".close-button" ).hide();
-          $( ".open-button" ).show();
-     });
-}
-
 // Collapses the Nav when it is open and the user clicks off of it.
 function clickedOffNav() {
     $(document).click(function(e) {
-         if (viewportWidth <= 1024 && $(".search").is(':visible')) {
+         if (viewportWidth <= 1199 && $(".search").is(':visible')) {
               if ($(e.target).closest(".search").length === 0 && $(e.target).closest(".menu-button").length === 0) {
                    $( ".search" ).slideToggle( "slow");
                    $( ".close-button" ).hide();
@@ -332,6 +317,50 @@ function clickedOffNav() {
               }     
          }
     });
+}
+
+// Collapses the nav when the close menu button is clicked.
+function closeMenuClicked() {
+    $( ".close-button" ).click(function() {
+         $( ".search" ).slideToggle( "slow");
+         $( ".close-button" ).hide();
+         $( ".open-button" ).show();
+    });
+}
+
+// Expands the nav when the open menu button is clicked.
+function openMenuClicked() {
+    $( ".open-button" ).click(function() {
+         $( ".search" ).slideToggle( "slow");
+         $( ".open-button" ).hide();
+         $( ".close-button" ).show();
+    });
+}
+
+// Adjusts the nav bar based on the viewPort width.
+function setNavBar() {
+    if (viewportWidth <= 1199) {
+         $(".open-button").show();
+         $(".close-button").hide();
+         $(".search").hide();
+    } else {
+         $(".search").show();
+         $(".open-button").hide();
+         $(".close-button").hide();
+    }
+}
+
+// Listens for viewport resize events and adjusts the nav bar and the viewportWidth accordingly.
+function viewportResized() {
+    window.addEventListener('resize', function () {
+         setViewportWidth();
+         setNavBar();
+    });
+}
+
+// Sets the initial viewportWidth and update viewportWidth whenever the viewport is resized.
+function setViewportWidth() {
+    viewportWidth = window.innerWidth;
 }
 
 function watchForms() {
@@ -348,7 +377,7 @@ function watchForms() {
         const parkCodeSelected = $("#parks-list-detail").val();
   
         if (parkCodeSelected !== "") {
-            if (viewportWidth <= 1024) {
+            if (viewportWidth <= 1199) {
                 $( ".search" ).slideToggle( "fast");
                 $( ".close-button" ).hide();
                 $( ".open-button" ).show();
@@ -357,8 +386,8 @@ function watchForms() {
             $('.detail-content').empty();
             getParkDetail(parkCodeSelected);
         }
-      });
-  }
+    });
+}
 
 function populateDropdown(elementID) {
     let parksList = document.getElementById(elementID);
@@ -373,35 +402,31 @@ function populateDropdown(elementID) {
     }
 }
 
-function initializeDetailScreenDropdown() {
+function initializeDropdowns() {
+    populateDropdown("parks-list-home");
     populateDropdown("parks-list-detail");
+
+    $('#parks-list-home').select2({
+        placeholder: 'Select a National Park'
+    });
 
     $('#parks-list-detail').select2({
         placeholder: 'Select a National Park'
     });
 }
 
-function initializeHomeScreenDropdown() {
-    populateDropdown("parks-list-home");
-
-    $('#parks-list-home').select2({
-        placeholder: 'Select a National Park'
-    });
-}
-
 function onPageLoad() {
-    initializeHomeScreenDropdown();
-    initializeDetailScreenDropdown();
+    initializeDropdowns();
+    watchForms();
     setViewportWidth();
-    setNavBar();
     viewportResized();
+    setNavBar();
     openMenuClicked();
     closeMenuClicked();
     clickedOffNav();
-    watchForms();
     hikingTrailsButtonClicked();
     campgroundsButtonClicked();
-    backButtonClicked()
+    backButtonClicked();
 }
 
 $(onPageLoad);
