@@ -37,6 +37,7 @@ function backButtonClicked() {
         $('.hiking-content').addClass('hidden');
         $('.campground-content').addClass('hidden');
         $('.detail-content').removeClass('hidden');
+        window.scrollTo(0, 0);
     });
 }
 
@@ -87,6 +88,7 @@ function getCampgrounds(currentParkCode) {
         })
         .then(responseJson => {
             displayCampgrounds(responseJson);
+            window.scrollTo(0, 0);
         })
         .catch(error => {
             console.log(error.message);
@@ -153,6 +155,7 @@ function getHikingTrails(latLong) {
         })
         .then(responseJson => {
             displayHikingTrails(responseJson);
+            window.scrollTo(0, 0);
         })
         .catch(error => {
             console.log(error.message);
@@ -227,6 +230,8 @@ function getParkWeather(latLong) {
 
 function displayParkDetail(responseJson) {
     console.log(responseJson);
+
+    $('.detail-content').empty();
     
     $('.detail-content').append(`        
         <h2>${responseJson.data[0].fullName}</h2>
@@ -270,8 +275,8 @@ function displayParkDetail(responseJson) {
     $('.home-content').addClass('hidden');
     $('.hiking-content').addClass('hidden');
     $('.campground-content').addClass('hidden');
-    $('.detail-content').removeClass('hidden');
     $('.detail-screen-heading').removeClass('hidden');
+    $('.detail-content').removeClass('hidden');
 }
 
 function getParkDetail(parkCodeSelected) {
@@ -300,6 +305,7 @@ function getParkDetail(parkCodeSelected) {
 
             displayParkDetail(responseJson);
             getParkWeather(latLong);
+            window.scrollTo(0, 0);
         })
         .catch(error => {
             console.log(error.message);
@@ -365,18 +371,18 @@ function setViewportWidth() {
 
 function watchForms() {
     $('.js-parks-form-home').submit(event => {
-      event.preventDefault();
-      const parkCodeSelected = $("#parks-list-home").val();
-    
-      if (parkCodeSelected !== "") {
-        if (viewportWidth <= 1199) {
-            $( ".search" ).hide();
-            $( ".close-button" ).hide();
-            $( ".open-button" ).show();
+        event.preventDefault();
+        const parkCodeSelected = $("#parks-list-home").val();
+        
+        if (parkCodeSelected !== "") {
+            if (viewportWidth <= 1199) {
+                $( ".search" ).hide();
+                $( ".close-button" ).hide();
+                $( ".open-button" ).show();
+            }
+            
+            getParkDetail(parkCodeSelected);
         }
-
-        getParkDetail(parkCodeSelected);
-      }
     });
 
     $('.js-parks-form-detail').change(function() {
@@ -389,7 +395,6 @@ function watchForms() {
                 $( ".open-button" ).show();
             }
 
-            $('.detail-content').empty();
             getParkDetail(parkCodeSelected);
         }
     });
@@ -429,18 +434,17 @@ $('#home-link').click(function(event){
 
     $('.hiking-content').addClass('hidden');
     $('.campground-content').addClass('hidden');
-    $('.detail-content').empty();
     $('.detail-content').addClass('hidden');
     $('.detail-screen-heading').addClass('hidden');
+
     $('.hero-home-screen').removeClass('hidden');
     $('.home-content').removeClass('hidden');
-
-    document.getElementById('hero-home-screen').scrollIntoView(true);
+    window.scrollTo(0, 0);
 });
 
 $('#next-link').click(function(event){
     event.preventDefault();
-    document.getElementById('home-content').scrollIntoView(true);
+    document.getElementById('home-content').scrollIntoView({behavior: 'smooth'});
 });
 
 function onPageLoad() {
