@@ -14,32 +14,45 @@
     <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Open+Sans:400,700|Merriweather:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section class="hero-home-screen">
+    <section id="hero-home-screen" class="hero-home-screen">
         <div class="hero-inner">
             <h1>National Parks Explorer</h1>
-            <h2>Where will you go next?</h2>
+            <h2>Where will you go <a id="next-link" href="#home-content">next</a>?</h2>
         </div>
     </section>
 
     <section class="detail-screen-heading hidden">
-        <span class="menu-button open-button" role="button" tabindex="0" aria-expanded="false" aria-controls="search"><i class="fas fa-search-location fa-lg"></i></span>
-        <span class="menu-button close-button" role="button" tabindex="0" aria-expanded="true" aria-controls="search"><i class="fas fa-times fa-lg"></i></span>
+        <span class="menu-button open-button" role="button" tabindex="0" aria-expanded="false" aria-controls="search">
+            <i class="fas fa-search-location fa-lg"></i>
+        </span>
+        <span class="menu-button close-button" role="button" tabindex="0" aria-expanded="true" aria-controls="search">
+            <i class="fas fa-times fa-lg"></i>
+        </span>
 
-        <h1>National Parks Explorer</h1>
+        <a id="home-link" href="#hero-home-screen"><h1>National Parks Explorer</h1></a>
 
         <nav id="search" class="search">
             <form class="js-parks-form-detail parks-form">
-                <label for="parks-list-detail"><i class="fas fa-search-location fa-lg"></i><span class="label-text">Explore A New Park:</span></label>
+                <label for="parks-list-detail">
+                    <i class="fas fa-search-location fa-lg"></i>
+                    <span class="label-text">Explore A New Park:</span>
+                </label>
                 <select id="parks-list-detail" name="parks-list-detail">
-                <option value=""></option>
+                    <option value=""></option>
                 </select>
             </form>
         </nav>
     </section>
 
     <main>
-        <section class="home-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut tellus elementum sagittis vitae et leo duis. Mattis molestie a iaculis at erat pellentesque. Diam maecenas sed enim ut. Tincidunt id aliquet risus feugiat in ante metus. Tempus quam pellentesque nec nam. Ultrices sagittis orci a scelerisque. Sed libero enim sed faucibus turpis in eu. Urna neque viverra justo nec ultrices. Ac ut consequat semper viverra nam libero justo.</p>
+        <section id="home-content" class="home-content">
+            <p id="app-description">
+                The beauty of nature doesn't need to be hard to find and National Parks Explorer makes planning your next 
+                National Parks adventure easier than ever. You can see the location, a detailed description, weather information,
+                and driving directions for all 61 National Parks in the United States. Hikers and campers, we got you covered too,
+                as each National Park page contains a list of the most popular hikes and campgrounds within the park. We provide 
+                the details so you plan your next adventure with ease and confidence. Find your new favorite National Park today.
+            </p>
             <form class="js-parks-form-home parks-form">
                 <label for="parks-list-home"><h3>Find Your Park</h3></label>
                 <select id="parks-list-home" name="parks-list-home">

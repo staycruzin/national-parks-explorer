@@ -15,11 +15,10 @@ body {
 
     text-align: center;
 
-    background-color: grey;
+    background-image: url(assets/hero-image-1.jpeg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 .hero-inner {
@@ -27,16 +26,30 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-h1, .hero-home-screen h2 {
-    position: absolute;
+    position: relative;
+    padding: 20px;
 }
 
 h1 {
-    top: 20px;
+    margin: 0;
+    padding: 0;
+    width: 300px;
     font-family: 'Major Mono Display', monospace;
-    font-size: 2.5rem;
+    font-size: 3rem;
+}
+
+.hero-home-screen h2 {
+    position: relative;
+    top: 20px;
+}
+
+#next-link {
+    font-weight: 700;
+    color: black;
+}
+
+#next-link:hover {
+    color: forestgreen;
 }
 
 .hero-home-screen h2,
@@ -53,12 +66,10 @@ footer {
 .detail-content h2, 
 .hiking-content h2,
 .campground-content h2 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .hero-home-screen h2 {
-    width: 80%;
-    top: 50%;
     font-weight: 400;
 }
 
@@ -66,6 +77,11 @@ footer {
     text-align: center;
     padding: 0 20px;
     font-weight: 700;
+}
+
+#home-link {
+    text-decoration: none;
+    color: black;
 }
 
 .detail-content h3,
@@ -78,8 +94,12 @@ footer {
 }
 
 .home-content {
-    padding: 40px 20px;
+    padding: 5% 20px;
     background-color: lightgrey;
+}
+
+#app-description {
+    line-height: 1.5rem;
 }
 
 .parks-form {
@@ -109,10 +129,6 @@ footer {
     margin: 5px 0 !important;
 }
 
-.parks-form label,
-.parks-form input {
-    padding: 5px;
-}
 
 .detail-screen-heading {
     position: fixed;
@@ -301,10 +317,6 @@ footer {
 }
 
 @media screen and (min-width: 375px) {
-    h1 {
-       font-size: 3.125rem; 
-    }
-
     h2,
     .hiking-content h2,
     .campground-content h2 {
@@ -313,12 +325,17 @@ footer {
 }
 
 @media (min-height: 800px) and (min-width: 375px) {
-    h1 {
-       top: 40px;
+    .hero-home-screen h2 {
+        top: 70px;
     }
 }
 
 @media screen and (min-width: 700px) {
+    .home-content {
+        padding: 5% 15%;
+        background-color: lightgrey;
+    }
+    
     .detail-screen-heading h1 {
         font-size: 1.5rem;
     }
@@ -365,6 +382,20 @@ footer {
 @media screen and (min-width: 1200px) {
     body {
         font-size: 20px;
+    }
+
+    #app-description {
+        line-height: 1.6rem;
+    }
+
+    h1 {
+        width: 400px;
+        font-size: 3.5rem;
+    }
+
+    .hero-home-screen h2 {
+        top: 20px;
+        font-size: 1.6rem;
     }
 
     main {
@@ -500,7 +531,7 @@ footer {
     }
 
     .home-content .select2 {
-        max-width: 50% !important;
+        max-width: 60% !important;
     }
 
     .weather-forecast .day {
@@ -529,7 +560,17 @@ footer {
 
 }
 
+@media (min-height: 800px) and (min-width: 1200px) {
+    .hero-home-screen h2 {
+        top: 50px;
+    }
+}
+
 @media screen and (min-width: 1600px) {
+    .home-content {
+        padding: 5% 25%;
+    }
+
     .detail-content {
         margin: auto;
         width: 80%;

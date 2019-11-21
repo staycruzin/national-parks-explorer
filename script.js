@@ -367,16 +367,22 @@ function watchForms() {
     $('.js-parks-form-home').submit(event => {
       event.preventDefault();
       const parkCodeSelected = $("#parks-list-home").val();
-
+    
       if (parkCodeSelected !== "") {
+        if (viewportWidth <= 1199) {
+            $( ".search" ).hide();
+            $( ".close-button" ).hide();
+            $( ".open-button" ).show();
+        }
+
         getParkDetail(parkCodeSelected);
       }
     });
 
     $('.js-parks-form-detail').change(function() {
         const parkCodeSelected = $("#parks-list-detail").val();
-  
-        if (parkCodeSelected !== "") {
+
+        if (parkCodeSelected !== "" && parkCodeSelected !== null) {
             if (viewportWidth <= 1199) {
                 $( ".search" ).slideToggle( "fast");
                 $( ".close-button" ).hide();
@@ -414,6 +420,28 @@ function initializeDropdowns() {
         placeholder: 'Select a National Park'
     });
 }
+
+$('#home-link').click(function(event){
+    event.preventDefault();
+
+    $("#parks-list-home").select2("val", "0");
+    $("#parks-list-detail").select2("val", "0");
+
+    $('.hiking-content').addClass('hidden');
+    $('.campground-content').addClass('hidden');
+    $('.detail-content').empty();
+    $('.detail-content').addClass('hidden');
+    $('.detail-screen-heading').addClass('hidden');
+    $('.hero-home-screen').removeClass('hidden');
+    $('.home-content').removeClass('hidden');
+
+    document.getElementById('hero-home-screen').scrollIntoView(true);
+});
+
+$('#next-link').click(function(event){
+    event.preventDefault();
+    document.getElementById('home-content').scrollIntoView(true);
+});
 
 function onPageLoad() {
     initializeDropdowns();
