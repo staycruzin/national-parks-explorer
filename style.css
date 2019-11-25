@@ -6,7 +6,7 @@
 
 body {
     font-size: 18px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Oxygen', sans-serif;
 }
 
 .hero-home-screen {
@@ -15,7 +15,10 @@ body {
 
     text-align: center;
 
-    background-image: url(assets/hero-image-1.jpeg);
+    background: linear-gradient(
+                    rgba(20,20,20, .5), 
+                    rgba(20,20,20, .5)),
+                    url(assets/hero-image-1.jpeg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -38,18 +41,18 @@ h1 {
     font-size: 3rem;
 }
 
+.hero-home-screen h1 {
+    color: #FFFFFF;
+}
+
 .hero-home-screen h2 {
     position: relative;
+    color: #FFFFFF;
     top: 20px;
 }
 
 #next-link {
-    font-weight: 700;
-    color: black;
-}
-
-#next-link:hover {
-    color: forestgreen;
+    color: #F4B434;
 }
 
 .hero-home-screen h2,
@@ -57,20 +60,21 @@ h1 {
 .detail-content h3,
 .home-content h3,
 .hiking-content h2,
-.campground-content h2
+.campground-content h2,
 footer {
     font-family: 'Merriweather', serif;
 }
 
-.hero-home-screen h2,
+.hero-home-screen h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
 .detail-content h2, 
 .hiking-content h2,
 .campground-content h2 {
-    font-size: 1.4rem;
-}
-
-.hero-home-screen h2 {
-    font-weight: 400;
+    color: #663C1D;
+    font-size: 1.625rem;
 }
 
 .detail-content h2 {
@@ -84,8 +88,7 @@ footer {
     color: black;
 }
 
-.detail-content h3,
-.home-content h3 {
+.detail-content h3 {
     font-size: 1.2rem;
 }
 
@@ -95,11 +98,49 @@ footer {
 
 .home-content {
     padding: 5% 20px;
-    background-color: lightgrey;
+    background-color: #FFFFFF;
+}
+
+.home-content h3 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #663C1D;
 }
 
 #app-description {
     line-height: 1.5rem;
+}
+
+#app-description span {
+    font-weight: 700;
+}
+
+#explore-button {
+    margin-top: 5px;
+}
+
+.detail-button {
+    margin-top: 20px;
+    width: 200px;
+}
+
+#explore-button,
+.detail-button,
+.back-button {
+    border: none;
+    background-color: #663C1D;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+#explore-button:hover,
+.detail-button:hover,
+.back-button:hover {    
+    color: #F4B434;
 }
 
 .parks-form {
@@ -112,6 +153,12 @@ footer {
 #search .parks-form {
     width: 100%;
     margin-bottom: 20px;
+}
+
+#search .label-text {
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+    color: #FFFFFF;    
 }
 
 #search .fa-search-location {
@@ -135,7 +182,7 @@ footer {
     top: 0;
     width: 100%;
     z-index: 999;
-    background-color: grey;
+    background-color: #663C1D;
     display: flex;
     align-items: center;
     padding: 0 15px;
@@ -146,7 +193,7 @@ footer {
     cursor: pointer;
     align-self: center;
     outline: 0;
-    color: black;
+    color: #F4B434;
 }
 
 #search {
@@ -157,13 +204,14 @@ footer {
     top: 63px;
     left: 0;
     width: 100%;
-    background: grey;
+    background: #663C1D;
 }
 
 .detail-screen-heading h1 {
     position: absolute;
-    width: 70%;
+    width: 200px;
     text-align: center;
+    color: #F4B434;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -199,11 +247,12 @@ footer {
 
 .hiking-content li:nth-child(odd),
 .campground-content li:nth-child(odd) {
-    background-color: lightgrey;   
+    background-color:#EEEEEE;   
 }
 
 .hiking-content h2,
 .campground-content h2 {
+    color: #663C1D;
     text-align: center;
     margin: 0 10px 20px 10px;
 } 
@@ -228,11 +277,9 @@ footer {
 }
 
 .back-button {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     width: max-content;
     margin-top: 20px;
-    padding: 5px;
 }
 
 .detail-content p {
@@ -241,11 +288,11 @@ footer {
 
 .detail-section {
     padding: 20px 20px;
-    background-color: white;    
+    background-color: white; 
 }
 
 .detail-section:nth-child(odd) {
-    background-color: lightgrey;   
+    background-color: #EEEEEE;   
 }
 
 .state {
@@ -290,13 +337,9 @@ footer {
 }
 
 .buttons-container {
-    margin-top: 30px;
     display: flex;
-    justify-content: space-around;
-}
-
-.detail-button {
-    padding: 5px;
+    flex-direction: column;
+    align-items: center;
 }
 
 img {
@@ -307,29 +350,18 @@ footer {
     height: 64px;
     font-size: 0.9rem;
     padding: 5px 20px;
-    font-weight: 700;
-    background-color: grey;
+    color: #F4B434;
+    background-color: #663C1D;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #contact-links a {
     text-decoration: none;
     margin: 0px 5px;
-}
-
-#contact-links #mail {
-    color: #B23121;
-}
-
-#contact-links #linkedin {
-    color: #2867B2;
-}
-
-#contact-links #github {
-    color: #000000;
+    color: #F4B434;
 }
 
 .hidden {
@@ -342,11 +374,6 @@ footer {
     .campground-content h2 {
         font-size: 1.875rem;
     }
-
-    footer {
-        font-size: 1rem;
-        flex-direction: row-reverse;
-    }
 }
 
 @media (min-height: 800px) and (min-width: 375px) {
@@ -358,17 +385,11 @@ footer {
 @media screen and (min-width: 700px) {
     .home-content {
         padding: 5% 15%;
-        background-color: lightgrey;
     }
     
     .detail-screen-heading h1 {
-        font-size: 1.5rem;
-    }
-
-    .detail-content h2,
-    .hiking-content h2,
-    .campground-content h2 {
-        font-size: 2rem;
+        font-size: 1.3rem;
+        width: 350px;
     }
 
     #search .select2 {
@@ -403,10 +424,16 @@ footer {
         margin: 0px;
     }
 
+    .buttons-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
     footer {
         font-size: 1rem;
         flex-direction: row-reverse;
-        justify-content: center;
+        justify-content: space-evenly;
     }
 
     #contact-links {
@@ -434,7 +461,10 @@ footer {
     }
 
     main {
-        background-image: url(assets/hero-image-1.jpeg);
+        background: linear-gradient(
+            rgba(20,20,20, .5), 
+            rgba(20,20,20, .5)),
+            url(assets/hero-image-1.jpeg);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
@@ -460,6 +490,7 @@ footer {
         flex-direction: row;
         top: 0;
         width: max-content;
+        background: none;
     }
 
     #search .parks-form {
@@ -469,6 +500,7 @@ footer {
 
     #search .fa-search-location {
         display: inline;
+        color: #E3B958;
         padding: 2px 5px 0 0;
     }
 
@@ -498,6 +530,7 @@ footer {
     }
 
     .detail-content h2 {
+        color: #FFFFFF;
         grid-row: 1;
         grid-column: span 2;
         margin: auto;
@@ -532,7 +565,7 @@ footer {
         margin: 0;
         grid-column: 1;
         grid-row: 2;
-        background-color: lightgrey; 
+        background-color: #EEEEEE; 
         border-top-left-radius: 8px; 
     }
 
@@ -555,14 +588,25 @@ footer {
 
     .directions-and-more {
         grid-column: 2;
-        grid-row: 3; 
+        grid-row: 3;
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-between;
         background-color: white !important;  
         margin-bottom: 115px;  
         border-bottom-right-radius: 8px;       
     }
 
+    .detail-button {
+        margin-top: 0;
+    }
+
+    .buttons-container {
+        height: 100%;
+    }
+
     .home-content {
-        padding: 5% 20%;
+        padding: 5% 25%;
     }
 
     .home-content .select2 {
@@ -581,7 +625,7 @@ footer {
 
     .hiking-content h2,
     .campground-content h2 {
-        color: black;
+        color: #FFFFFF;
         font-size: 2.5rem;
     }
 
@@ -604,14 +648,14 @@ footer {
 }
 
 @media screen and (min-width: 1600px) {
-    .home-content {
-        padding: 5% 25%;
-    }
 
     .detail-content {
         margin: auto;
         width: 80%;
     }
 
+    .home-content {
+        padding: 5% 30%;
+    }
 
 }

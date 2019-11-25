@@ -262,8 +262,11 @@ function displayParkDetail(responseJson) {
         </section>
 
         <section class="directions-and-more detail-section">
-            <h3>Directions Information</h3>
-            <p>${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
+            <div>
+                <h3>Directions Information</h3>
+                <p>${responseJson.data[0].directionsInfo} More info <a target="_blank" href="${responseJson.data[0].directionsUrl}">here</a>.</p>
+            </div>
+
             <div class="buttons-container">
                 <button class="js-camp-button detail-button" type="button">Campgrounds</button>
                 <button class="js-hike-button detail-button" type="button">Hiking Trails</button>
