@@ -10,7 +10,7 @@ National Parks Explorer was built with:
 - JavaScript
 - jQuery
 
-This application is fully responsive with breakpoints/media queries that optimize the user experience for all standard device types.
+This application is fully responsive with media queries (screen size) that optimize the user experience on all standard device types.
 
 ## Screenshots
 ### Home Page (1/2)
