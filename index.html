@@ -11,17 +11,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Open+Sans:400,700|Merriweather:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Oxygen:400,700|Merriweather:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section id="hero-home-screen" class="hero-home-screen">
-        <div class="hero-inner">
+    <section id="hero-home-screen">
+        <div id="hero-inner">
             <h1>National Parks Explorer</h1>
-            <h2>Where will you go <a id="next-link" href="#home-content">next</a>?</h2>
+            <h2 class="merriweather">Where will you go <a id="next-link" href="#home-content">next</a>?</h2>
         </div>
     </section>
 
-    <section id="detail-screen-heading" class="detail-screen-heading hidden">
+    <section id="detail-screen-heading" class="hidden">
         <span class="menu-button open-button" role="button" tabindex="0" aria-expanded="false" aria-controls="search">
             <i class="fas fa-search-location fa-lg"></i>
         </span>
@@ -29,13 +29,13 @@
             <i class="fas fa-times fa-lg"></i>
         </span>
 
-        <a id="home-link" href="#hero-home-screen"><h1>National Parks Explorer</h1></a>
+        <a id="home-link" href="#hero-home-screen"><h1 class="center">National Parks Explorer</h1></a>
 
-        <nav id="search" class="search">
-            <form class="js-parks-form-detail parks-form">
+        <nav id="search">
+            <form id="js-parks-form-detail" class="parks-form">
                 <label for="parks-list-detail">
                     <i class="fas fa-search-location fa-lg"></i>
-                    <span class="label-text">Explore A New Park:</span>
+                    <span class="label-text merriweather">Explore A New Park:</span>
                 </label>
                 <select id="parks-list-detail" name="parks-list-detail">
                     <option value=""></option>
@@ -45,39 +45,40 @@
     </section>
 
     <main>
-        <section id="home-content" class="home-content">
+        <section id="home-content">
+            <h3 class="merriweather center">Find Your Park</h3>
             <p id="app-description">
                 The beauty of nature doesn't need to be hard to find and National Parks Explorer makes planning your next 
                 National Parks adventure easier than ever. You can see the location, a detailed description, weather information,
                 and driving directions for all 61 National Parks in the United States. Hikers and campers, we got you covered too,
-                as each National Park page contains a list of the most popular hikes and campgrounds within the park. We provide 
-                the details so you can plan your next adventure with ease and confidence. Find your new favorite National Park today.
+                as each National Park page contains a list of the most popular hikes and campgrounds within the park.
+                <br><br>
+                We provide the details so you can plan your next adventure with ease and confidence. <span>Find your new favorite National Park today.</span>
             </p>
-            <form class="js-parks-form-home parks-form">
-                <label for="parks-list-home"><h3>Find Your Park</h3></label>
+            <form id="js-parks-form-home" class="parks-form">
                 <select id="parks-list-home" name="parks-list-home">
                     <option value=""></option>
                 </select>
-                <input type="submit" value="Explore">
+                <input id="explore-button" class="button" type="submit" value="Explore">
             </form>
         </section>
 
-        <section class="detail-content hidden"></section>
+        <section id="detail-content" class="hidden"></section>
 
-        <section class="hiking-content hidden">
-            <h2 id="hiking-content-header"></h2>
+        <section id="hiking-content" class="hidden">
+            <h2 id="hiking-content-header" class="merriweather center"></h2>
             <ul id="trails-list"></ul>
-            <button class="js-back-button back-button" type="button">Back</button>
+            <button class="js-back-button back-button button" type="button">Back</button>
         </section>
 
-        <section class="campground-content hidden">
-            <h2 id="camping-content-header"></h2>
+        <section id="campground-content" class="hidden">
+            <h2 id="camping-content-header" class="merriweather center"></h2>
             <ul id="campgrounds-list"></ul>
-            <button class="js-back-button back-button" type="button">Back</button>
+            <button class="js-back-button back-button button" type="button">Back</button>
         </section>
     </main>
 
-    <footer>
+    <footer class="merriweather">
         <div id="contact-links">
             <a id="mail" href="mailto:anthonyncruz@gmail.com">
                 <i class="fas fa-envelope-square fa-2x"></i>
