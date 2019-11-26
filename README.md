@@ -1,6 +1,27 @@
 # National Parks Explorer
 Helps users obtain detailed information about each of the U.S. National Parks, which includes a description, URL, campgrounds, hiking trails, typical weather, and current weather using the NPS.gov, HikingProject.com, and Weatherbit.io API's.
 
+## Technical
+
+National Parks Explorer was built with:
+
+- HTML5
+- CSS3
+- JavaScript
+- jQuery
+
+This application is fully responsive with breakpoints/media queries that optimize the user experience for all standard device types.
+
+## Screenshots
+### Home Page (1/2)
+![Home Page Hero Image Screenshot](https://imgur.com/o8EOZEN.png)
+
+### Home Page (2/2)
+![Home Page Content Screenshot](https://imgur.com/JYn1NUy.png)
+
+### National Park Detail Page
+![National Park Detail Page Screenshot](https://imgur.com/Zbq5ISh.png)
+
 ## User Stories
 ### Must Have:
 - As an explorer, I want to view a list of all the National Parks in the United States so I can see how many there are and where they are located.
@@ -19,9 +40,9 @@ Helps users obtain detailed information about each of the U.S. National Parks, w
 ![Site Map and User Flows Diagram](https://imgur.com/2RwjTt3.png)
 
 ## Wireframes (MVP)
-### Home Screen
+### Home Page
 ![Wireframe for the Home Screen](https://imgur.com/8tWegnB.png)
 
-### National Park Detail Screen
+### National Park Detail Page
 ![Wireframe for the Park Detail Screen](https://imgur.com/H3zEk3E.png)
 
