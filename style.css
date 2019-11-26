@@ -9,7 +9,45 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
-.hero-home-screen {
+h1 {
+    margin: 0;
+    padding: 0;
+    font-family: 'Major Mono Display', monospace;
+}
+
+.merriweather {
+    font-family: 'Merriweather', serif;
+}
+
+#hero-home-screen h1 {
+    font-size: 3rem;
+    width: 300px;
+}
+
+#detail-content h2, 
+#hiking-content h2,
+#campground-content h2 {
+    font-size: 1.625rem;
+}
+
+#hero-home-screen h2,
+#home-content h3 {
+    font-size: 1.4rem;
+}
+
+#detail-content h3 {
+    font-size: 1.2rem;
+}
+
+.weather-forecast .temps {
+    font-size: 0.8rem;
+}
+
+.center {
+    text-align: center;
+}
+
+#hero-home-screen {
     width: 100vw;
     height: 100vh;
 
@@ -24,88 +62,40 @@ body {
     background-repeat: no-repeat;
 }
 
-.hero-inner {
+#hero-inner {
     height: inherit;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
     position: relative;
     padding: 20px;
 }
 
-h1 {
-    margin: 0;
-    padding: 0;
-    width: 300px;
-    font-family: 'Major Mono Display', monospace;
-    font-size: 3rem;
-}
-
-.hero-home-screen h1 {
+#hero-home-screen h1,
+#hero-home-screen h2 {
     color: #FFFFFF;
 }
 
-.hero-home-screen h2 {
+#hero-home-screen h2 {
     position: relative;
-    color: #FFFFFF;
     top: 20px;
+    font-weight: 400;
 }
 
 #next-link {
     color: #F4B434;
 }
 
-.hero-home-screen h2,
-.detail-content h2,
-.detail-content h3,
-.home-content h3,
-.hiking-content h2,
-.campground-content h2,
-footer {
-    font-family: 'Merriweather', serif;
-}
-
-.hero-home-screen h2 {
-    font-size: 1.4rem;
-    font-weight: 400;
-}
-
-.detail-content h2, 
-.hiking-content h2,
-.campground-content h2 {
-    color: #663C1D;
-    font-size: 1.625rem;
-}
-
-.detail-content h2 {
-    text-align: center;
-    padding: 0 20px;
-    font-weight: 700;
-}
-
-#home-link {
-    text-decoration: none;
-    color: black;
-}
-
-.detail-content h3 {
-    font-size: 1.2rem;
-}
-
-.detail-content h3 {
-    margin-bottom: 5px;
-}
-
-.home-content {
+#home-content {
     padding: 5% 20px;
     background-color: #FFFFFF;
 }
 
-.home-content h3 {
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 10px;
+#home-content h3 {
     color: #663C1D;
+    margin-bottom: 10px;
 }
 
 #app-description {
@@ -116,38 +106,118 @@ footer {
     font-weight: 700;
 }
 
+.parks-form {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select2 {
+    margin: 5px 0 !important;
+}
+
+#home-content .select2 {
+    max-width: 100% !important;
+}
+
 #explore-button {
     margin-top: 5px;
 }
 
-.detail-button {
-    margin-top: 20px;
-    width: 200px;
-}
-
-#explore-button,
-.detail-button,
-.back-button {
+.button {
     border: none;
-    background-color: #663C1D;
     border-radius: 5px;
-    color: #FFFFFF;
-    cursor: pointer;
     padding: 10px;
+
+    color: #FFFFFF;
     text-transform: uppercase;
+    background-color: #663C1D;
+    opacity: 1;
+
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
 }
 
-#explore-button:hover,
-.detail-button:hover,
-.back-button:hover {    
+.button:hover {    
+    opacity: 0.8;
+}
+
+footer {
+    height: 64px;
+    padding: 5px 20px;
+
+    font-size: 0.9rem;
     color: #F4B434;
-}
-
-.parks-form {
-    margin-top: 20px;
+    background-color: #663C1D;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+}
+
+#contact-links a {
+    text-decoration: none;
+    margin: 0px 5px;
+    color: #F4B434;
+}
+
+#detail-screen-heading {
+    height: 64px;
+    width: 100%;
+    padding: 0 15px;
+
+    position: fixed;
+    top: 0;
+    z-index: 999;
+
+    background-color: #663C1D;
+
+    display: flex;
+    align-items: center;
+}
+
+#detail-screen-heading h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 200px;
+    margin: 0;
+
+    font-size: 1.1rem;
+    color: #F4B434;
+}
+
+#home-link {
+    text-decoration: none;
+}
+
+.menu-button {
+    cursor: pointer;
+    outline: 0;
+    color: #F4B434;
+}
+
+#search {
+    position: absolute;
+    top: 63px;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    background: #663C1D;
+}
+
+#search .select2 {
+    width: 90% !important;
+    max-width: 90% !important;
 }
 
 #search .parks-form {
@@ -155,134 +225,33 @@ footer {
     margin-bottom: 20px;
 }
 
-#search .label-text {
-    font-family: 'Merriweather', serif;
-    font-size: 1rem;
-    color: #FFFFFF;    
-}
-
 #search .fa-search-location {
     display: none;
 }
 
-.home-content .select2 {
-    max-width: 100% !important;
-    margin: 5px 0 !important;
+#search .label-text {
+    font-size: 1rem;
+    color: #FFFFFF;    
 }
 
-#search .select2 {
-    width: 90% !important;
-    max-width: 90% !important;
-    margin: 5px 0 !important;
-}
-
-
-.detail-screen-heading {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 999;
-    background-color: #663C1D;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    height: 64px;
-}
-
-.menu-button {
-    cursor: pointer;
-    align-self: center;
-    outline: 0;
-    color: #F4B434;
-}
-
-#search {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 63px;
-    left: 0;
-    width: 100%;
-    background: #663C1D;
-}
-
-.detail-screen-heading h1 {
-    position: absolute;
-    width: 200px;
-    text-align: center;
-    color: #F4B434;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.1rem;
-    margin: 0;
-}
-
-.detail-content {
+#detail-content {
     padding-top: 85px;
+
     display: flex;
     flex-direction: column;
+    
     background-color: white;
 }
 
-.hiking-content,
-.campground-content {
-    min-height: -webkit-calc(100vh - 64px);
-    min-height: expression(100vh - 64px);
-    min-height: -moz-calc(100vh - 64px);
-    min-height: -o-calc(100vh - 64px);
-    min-height: calc(100vh - 64px);
-
-    padding: 85px 0;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+#detail-content h2 {
+    padding: 0 20px;
 }
 
-.hiking-content li,
-.campground-content li{
-    background-color: white;   
+#detail-content h3 {
+    margin-bottom: 5px;
 }
 
-.hiking-content li:nth-child(odd),
-.campground-content li:nth-child(odd) {
-    background-color:#EEEEEE;   
-}
-
-.hiking-content h2,
-.campground-content h2 {
-    color: #663C1D;
-    text-align: center;
-    margin: 0 10px 20px 10px;
-} 
-
-.hiking-content li,
-.campground-content li {
-    text-align: center;
-    padding: 20px 5%;
-    list-style-type: none;
-}
-
-#trails-list p {
-    margin: 10px 0;
-}
-
-#campgrounds-list p {
-    margin-top: 10px;
-}
-
-.center-h3 {
-    text-align: center;
-}
-
-.back-button {
-    margin: auto;
-    width: max-content;
-    margin-top: 20px;
-}
-
-.detail-content p {
+#detail-content p {
     word-wrap: break-word;
 }
 
@@ -305,18 +274,6 @@ footer {
     border-radius: 8px;
 }
 
-.weather-forecast .temps {
-    font-size: 0.8rem;
-}
-
-.temps .high {
-    color: #878787;
-}
-
-.temps .low {
-    color: #bababa;
-}
-
 .daily-weather-container {
     padding: 0;
 }
@@ -327,6 +284,14 @@ footer {
     align-items: center;
     margin-top: 10px;
     padding: 10px;
+}
+
+.temps .high {
+    color: #878787;
+}
+
+.temps .low {
+    color: #bababa;
 }
 
 .weather-icon {
@@ -342,52 +307,90 @@ footer {
     align-items: center;
 }
 
-img {
-    max-width: 100%;
+.detail-button {
+    margin-top: 20px;
+    width: 200px;
 }
 
-footer {
-    height: 64px;
-    font-size: 0.9rem;
-    padding: 5px 20px;
-    color: #F4B434;
-    background-color: #663C1D;
+#hiking-content,
+#campground-content {
+    min-height: -webkit-calc(100vh - 64px);
+    min-height: expression(100vh - 64px);
+    min-height: -moz-calc(100vh - 64px);
+    min-height: -o-calc(100vh - 64px);
+    min-height: calc(100vh - 64px);
+
+    padding: 85px 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    background-color: white;
 }
 
-#contact-links a {
-    text-decoration: none;
-    margin: 0px 5px;
-    color: #F4B434;
+#hiking-content h2,
+#campground-content h2 {
+    margin: 0 10px 20px 10px;
+}
+
+#hiking-content li,
+#campground-content li{
+    padding: 20px 5%;
+    list-style-type: none;
+    background-color: white;   
+}
+
+#hiking-content li:nth-child(odd),
+#campground-content li:nth-child(odd) {
+    background-color:#EEEEEE;   
+}
+
+#trails-list p {
+    margin: 10px 0;
+}
+
+#campgrounds-list p {
+    margin-top: 10px;
+}
+
+.back-button {
+    margin: auto;
+    width: max-content;
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%;
 }
 
 .hidden {
     display: none !important;
 }
 
-@media screen and (min-width: 375px) {
-    h2,
-    .hiking-content h2,
-    .campground-content h2 {
-        font-size: 1.875rem;
-    }
-}
-
 @media (min-height: 800px) and (min-width: 375px) {
-    .hero-home-screen h2 {
+    #hero-home-screen h2 {
         top: 70px;
     }
 }
 
 @media screen and (min-width: 700px) {
-    .home-content {
+    #home-content {
         padding: 5% 15%;
     }
+
+    #home-content h3 {
+        font-size: 1.6rem;
+    }
+
+    footer {
+        font-size: 1rem;
+        flex-direction: row-reverse;
+        justify-content: space-evenly;
+    }
+
+    #contact-links {
+        padding-left: 20px;
+    }
     
-    .detail-screen-heading h1 {
+    #detail-screen-heading h1 {
         font-size: 1.3rem;
         width: 350px;
     }
@@ -401,13 +404,13 @@ footer {
         padding: 20px 10%;
     }
 
-    .hiking-content,
-    .campground-content {
+    #hiking-content,
+    #campground-content {
         padding: 85px 0;
     }
 
-    .hiking-content li,
-    .campground-content li {
+    #hiking-content li,
+    #campground-content li {
         text-align: center;
         padding: 20px 10%;
     }
@@ -429,16 +432,6 @@ footer {
         flex-direction: row;
         justify-content: space-around;
     }
-
-    footer {
-        font-size: 1rem;
-        flex-direction: row-reverse;
-        justify-content: space-evenly;
-    }
-
-    #contact-links {
-        padding-left: 20px;
-    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -446,43 +439,38 @@ footer {
         font-size: 20px;
     }
 
-    #app-description {
-        line-height: 1.6rem;
-    }
-
-    h1 {
+    #hero-home-screen h1 {
         width: 400px;
         font-size: 3.5rem;
     }
 
-    .hero-home-screen h2 {
-        top: 20px;
+    #hero-home-screen h2 {
         font-size: 1.6rem;
+        top: 20px;
     }
 
-    main {
-        background: linear-gradient(
-            rgba(20,20,20, .5), 
-            rgba(20,20,20, .5)),
-            url(assets/hero-image-1.jpeg);
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+    #home-content {
+        padding: 5% 25%;
     }
 
-    .detail-screen-heading {
+    #home-content .select2 {
+        max-width: 60% !important;
+    }
+
+    #detail-screen-heading {
         padding: 0 15px;
         height: 64px;
         justify-content: space-between;
     }
     
-    .detail-screen-heading h1 {
+    #detail-screen-heading h1 {
         position: relative;
         width: auto;
         left: 0;
         top: 0;
         transform: none;
+
+        font-size: 2rem;
     }
 
     #search {
@@ -514,7 +502,18 @@ footer {
         margin: 0 !important;
     }
 
-    .detail-content {
+    main {
+        background: linear-gradient(
+            rgba(20,20,20, .5), 
+            rgba(20,20,20, .5)),
+            url(assets/hero-image-1.jpeg);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    #detail-content {
         margin: auto;
         width: 90%;
         display: grid;
@@ -525,11 +524,7 @@ footer {
         background-color: transparent;
     }
 
-    .detail-screen-heading h1 {
-        font-size: 2rem;
-    }
-
-    .detail-content h2 {
+    #detail-content h2 {
         color: #FFFFFF;
         grid-row: 1;
         grid-column: span 2;
@@ -540,15 +535,23 @@ footer {
         font-size: 2.5rem;
     }
 
-    .detail-section h3 {
-        font-size: 1.2rem;
-    }
-
     .detail-section {
         padding: 20px 20px;
     }
 
-    .basic-details {
+    .detail-section h3 {
+        font-size: 1.2rem;
+    }
+
+    #park-image-container {
+        margin: 0;
+        grid-column: 1;
+        grid-row: 2;
+        background-color: #EEEEEE; 
+        border-top-left-radius: 8px; 
+    }
+
+    #basic-details {
         grid-column: 2;
         grid-row: 2;
         display: flex;
@@ -561,15 +564,7 @@ footer {
         margin-bottom: 0px;
     }
 
-    .park-image-container {
-        margin: 0;
-        grid-column: 1;
-        grid-row: 2;
-        background-color: #EEEEEE; 
-        border-top-left-radius: 8px; 
-    }
-
-    .weather-details {
+    #weather-details {
         grid-column: 1;
         grid-row: 3;  
         background-color: white;
@@ -586,7 +581,7 @@ footer {
         font-size: 0.9rem;
     }
 
-    .directions-and-more {
+    #directions-and-more {
         grid-column: 2;
         grid-row: 3;
         display: flex;
@@ -597,40 +592,32 @@ footer {
         border-bottom-right-radius: 8px;       
     }
 
-    .detail-button {
-        margin-top: 0;
-    }
-
     .buttons-container {
         height: 100%;
     }
 
-    .home-content {
-        padding: 5% 25%;
-    }
-
-    .home-content .select2 {
-        max-width: 60% !important;
+    .detail-button {
+        margin-top: 0;
     }
 
     .weather-forecast .day {
         font-size: 1rem;
     }
 
-    .hiking-content,
-    .campground-content {
+    #hiking-content,
+    #campground-content {
         padding: 85px 25%;
         background-color: transparent;
     }
 
-    .hiking-content h2,
-    .campground-content h2 {
+    #hiking-content h2,
+    #campground-content h2 {
         color: #FFFFFF;
         font-size: 2.5rem;
     }
 
-    .hiking-content li,
-    .campground-content li {
+    #hiking-content li,
+    #campground-content li {
         margin: 20px;
         padding: 20px;
         border-radius: 8px;
@@ -642,20 +629,23 @@ footer {
 }
 
 @media (min-height: 800px) and (min-width: 1200px) {
-    .hero-home-screen h2 {
+    #hero-home-screen h1 {    
+        position: relative;
         top: 50px;
+    }
+
+    #hero-home-screen h2 {    
+        top: 70px;
     }
 }
 
 @media screen and (min-width: 1600px) {
-
-    .detail-content {
+    #detail-content {
         margin: auto;
         width: 80%;
     }
 
-    .home-content {
+    #home-content {
         padding: 5% 30%;
     }
-
 }
