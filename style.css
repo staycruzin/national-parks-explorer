@@ -37,6 +37,11 @@ h1 {
 
 #detail-content h3 {
     font-size: 1.2rem;
+    color: #222622;
+}
+
+.weather-forecast .day {
+    font-size: 1rem;
 }
 
 .weather-forecast .temps {
@@ -94,7 +99,7 @@ h1 {
 }
 
 #home-content h3 {
-    color: #663C1D;
+    color: #222622;
     margin-bottom: 10px;
 }
 
@@ -133,7 +138,7 @@ h1 {
 
     color: #FFFFFF;
     text-transform: uppercase;
-    background-color: #663C1D;
+    background-color: #222622;
     opacity: 1;
 
     cursor: pointer;
@@ -150,7 +155,7 @@ footer {
 
     font-size: 0.9rem;
     color: #F4B434;
-    background-color: #663C1D;
+    background-color: #222622;
     
     display: flex;
     flex-direction: column;
@@ -173,7 +178,7 @@ footer {
     top: 0;
     z-index: 999;
 
-    background-color: #663C1D;
+    background-color: #222622;
 
     display: flex;
     align-items: center;
@@ -185,7 +190,7 @@ footer {
     top: 50%;
     transform: translate(-50%, -50%);
 
-    width: 200px;
+    width: 240px;
     margin: 0;
 
     font-size: 1.1rem;
@@ -212,7 +217,7 @@ footer {
     align-items: center;
 
     width: 100%;
-    background: #663C1D;
+    background: #222622;
 }
 
 #search .select2 {
@@ -245,6 +250,7 @@ footer {
 
 #detail-content h2 {
     padding: 0 20px;
+    color: #222622;
 }
 
 #detail-content h3 {
@@ -445,7 +451,6 @@ img {
     }
 
     #hero-home-screen h2 {
-        font-size: 1.6rem;
         top: 20px;
     }
 
@@ -488,7 +493,7 @@ img {
 
     #search .fa-search-location {
         display: inline;
-        color: #E3B958;
+        color: #F4B434;
         padding: 2px 5px 0 0;
     }
 
@@ -535,8 +540,13 @@ img {
         font-size: 2.5rem;
     }
 
+    #detail-content h3 {
+        font-size: 1.3rem;
+    }
+
     .detail-section {
         padding: 20px 20px;
+        background-color: white !important;
     }
 
     .detail-section h3 {
@@ -547,7 +557,6 @@ img {
         margin: 0;
         grid-column: 1;
         grid-row: 2;
-        background-color: #EEEEEE; 
         border-top-left-radius: 8px; 
     }
 
@@ -567,7 +576,6 @@ img {
     #weather-details {
         grid-column: 1;
         grid-row: 3;  
-        background-color: white;
         margin-bottom: 115px;
         border-bottom-left-radius: 8px;     
     }
@@ -587,7 +595,6 @@ img {
         display: flex;
         flex-direction: column; 
         justify-content: space-between;
-        background-color: white !important;  
         margin-bottom: 115px;  
         border-bottom-right-radius: 8px;       
     }
@@ -598,10 +605,6 @@ img {
 
     .detail-button {
         margin-top: 0;
-    }
-
-    .weather-forecast .day {
-        font-size: 1rem;
     }
 
     #hiking-content,

@@ -15,9 +15,6 @@ let latLong;
 let currentParkName;
 let currentParkCode;
 
-// Need to implement error handling code in all catch blocks instead of just a console log
-// Figure out a way to get rid of the duplicate "parseLatitudeAndLongitude" calls?
-
 function formatQueryParams(params) {
     const queryString = Object.keys(params)
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
@@ -372,6 +369,31 @@ function setViewportWidth() {
     viewportWidth = window.innerWidth;
 }
 
+function homeLinkClicked() {
+    $('#home-link').click(function(event){
+        event.preventDefault();
+    
+        $("#parks-list-home").select2("val", "0");
+        $("#parks-list-detail").select2("val", "0");
+    
+        $('#hiking-content').addClass('hidden');
+        $('#campground-content').addClass('hidden');
+        $('#detail-content').addClass('hidden');
+        $('#detail-screen-heading').addClass('hidden');
+    
+        $('#hero-home-screen').removeClass('hidden');
+        $('#home-content').removeClass('hidden');
+        window.scrollTo(0, 0);
+    });
+}
+
+function nextLinkClicked() {
+    $('#next-link').click(function(event){
+        event.preventDefault();
+        document.getElementById('home-content').scrollIntoView({behavior: 'smooth'});
+    });
+}
+
 function watchForms() {
     $('#js-parks-form-home').submit(event => {
         event.preventDefault();
@@ -429,30 +451,11 @@ function initializeDropdowns() {
     });
 }
 
-$('#home-link').click(function(event){
-    event.preventDefault();
-
-    $("#parks-list-home").select2("val", "0");
-    $("#parks-list-detail").select2("val", "0");
-
-    $('#hiking-content').addClass('hidden');
-    $('#campground-content').addClass('hidden');
-    $('#detail-content').addClass('hidden');
-    $('#detail-screen-heading').addClass('hidden');
-
-    $('#hero-home-screen').removeClass('hidden');
-    $('#home-content').removeClass('hidden');
-    window.scrollTo(0, 0);
-});
-
-$('#next-link').click(function(event){
-    event.preventDefault();
-    document.getElementById('home-content').scrollIntoView({behavior: 'smooth'});
-});
-
 function onPageLoad() {
     initializeDropdowns();
     watchForms();
+    nextLinkClicked();
+    homeLinkClicked();
     setViewportWidth();
     viewportResized();
     setNavBar();
