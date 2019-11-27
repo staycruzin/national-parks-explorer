@@ -17,10 +17,10 @@ This application is fully responsive with media queries (screen size) that optim
 ![Home Page Hero Image Screenshot](https://imgur.com/o8EOZEN.png)
 
 ### Home Page (2/2)
-![Home Page Content Screenshot](https://imgur.com/2quR5mJ.png)
+![Home Page Content Screenshot](https://imgur.com/weYDt5z.png)
 
 ### National Park Detail Page
-![National Park Detail Page Screenshot](https://imgur.com/Zbq5ISh.png)
+![National Park Detail Page Screenshot](https://imgur.com/QSeg6m6.png)
 
 ## User Stories
 ### Must Have:
