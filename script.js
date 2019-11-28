@@ -15,6 +15,7 @@ let latLong;
 let currentParkName;
 let currentParkCode;
 
+
 function formatQueryParams(params) {
     const queryString = Object.keys(params)
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`);
@@ -22,6 +23,7 @@ function formatQueryParams(params) {
     return queryString.join('&');
 }
 
+// Parses the latitude and longitude from a string and returns both values in an array
 function parseLatitudeandLongitude(latLong) {
     let latLongParsed = latLong.replace(/lat:|long:/g, '').split(', ');
 
@@ -38,6 +40,7 @@ function backButtonClicked() {
     });
 }
 
+// Displays the data that was fetched from the National Parks Service API call
 function displayCampgrounds(responseJson) {
     console.log(responseJson);
 
@@ -65,6 +68,7 @@ function displayCampgrounds(responseJson) {
     $('#campground-content').removeClass('hidden');
 }
 
+// Calls the National Parks Service API and fetches a list of the campgrounds in the National Park that was selected
 function getCampgrounds(currentParkCode) {
     const params = {
         parkCode: currentParkCode,
@@ -98,6 +102,7 @@ function campgroundsButtonClicked() {
     });
 }
 
+// Displays the data that was fetched from the Hiking Project API call
 function displayHikingTrails(responseJson) {
     console.log(responseJson);
 
@@ -126,6 +131,7 @@ function displayHikingTrails(responseJson) {
     $('#hiking-content').removeClass('hidden');
 }
 
+// Calls the Hiking Project API and fetches a list of the hiking trails in the National Park that was selected
 function getHikingTrails(latLong) {
     let latLongParsed = parseLatitudeandLongitude(latLong);
     let latitude = latLongParsed[0];
@@ -165,12 +171,14 @@ function hikingTrailsButtonClicked() {
     });
 }
 
+// Formats the date string returned by the Weatherbit API call
 function formatDate(dateString) {
     let dateArray = dateString.split('-');
 
     return dateArray[1] + '/' +  dateArray[2] + '/' + dateArray[0];
 }
 
+// Returns the 3 letter version of the day of the week from the date string returned by the Weatherbit API call
 function getDayOfWeek(dateString) {
     const daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let day = new Date(formatDate(dateString));
@@ -178,6 +186,7 @@ function getDayOfWeek(dateString) {
     return daysOfTheWeek[day.getDay()];
 }
 
+// Displays the data that was fetched from the Weatherbit API call
 function displayWeather(responseJson) {
     console.log(responseJson);
 
@@ -192,6 +201,7 @@ function displayWeather(responseJson) {
     }
 }
 
+// Calls the Weatherbit API and fetches the 5 day forecast for the National Park that was selected
 function getParkWeather(latLong) {
     let latLongParsed = parseLatitudeandLongitude(latLong);
     let latitude = latLongParsed[0];
@@ -225,6 +235,7 @@ function getParkWeather(latLong) {
         });
 }
 
+// Displays the data that was fetched from the National Parks Service API call
 function displayParkDetail(responseJson) {
     console.log(responseJson);
 
@@ -279,6 +290,7 @@ function displayParkDetail(responseJson) {
     $('#detail-content').removeClass('hidden');
 }
 
+// Calls the National Parks Service API and fetches the relevant data for the National Park that was selected
 function getParkDetail(parkCodeSelected) {
     currentParkCode = parkCodeSelected;
 
@@ -290,7 +302,7 @@ function getParkDetail(parkCodeSelected) {
     const queryString = formatQueryParams(params);
     const url = NPS_URL + 'parks?' + queryString;
 
-    console.log(url);
+    // console.log(url);
 
     fetch(url)
         .then(response => {
@@ -425,6 +437,7 @@ function watchForms() {
     });
 }
 
+// Populates the select options with the list of National Parks
 function populateDropdown(elementID) {
     let parksList = document.getElementById(elementID);
 
@@ -438,6 +451,7 @@ function populateDropdown(elementID) {
     }
 }
 
+// Initializes the select elements
 function initializeDropdowns() {
     populateDropdown("parks-list-home");
     populateDropdown("parks-list-detail");

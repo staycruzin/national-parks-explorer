@@ -1,6 +1,10 @@
 # National Parks Explorer
 Helps users obtain detailed information about each of the U.S. National Parks, which includes a description, URL, campgrounds, hiking trails, typical weather, and current weather using the NPS.gov, HikingProject.com, and Weatherbit.io API's.
 
+## Demo
+
+- [Live Demo](https://staycruzin.github.io/national-parks-explorer/)
+
 ## Technical
 
 National Parks Explorer was built with:
