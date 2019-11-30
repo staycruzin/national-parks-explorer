@@ -52,6 +52,11 @@ h1 {
     text-align: center;
 }
 
+.error-message {
+    color: red;
+    font-weight: 700;
+}
+
 #hero-home-screen {
     width: 100vw;
     height: 100vh;
@@ -219,6 +224,12 @@ h1 {
 }
 
 #detail-content {
+    min-height: -webkit-calc(100vh - 64px);
+    min-height: expression(100vh - 64px);
+    min-height: -moz-calc(100vh - 64px);
+    min-height: -o-calc(100vh - 64px);
+    min-height: calc(100vh - 64px);
+
     padding-top: 85px;
 
     display: flex;
@@ -517,6 +528,17 @@ img {
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
+    }
+
+    .nps-error-message {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px 40px;
     }
 
     #detail-content {

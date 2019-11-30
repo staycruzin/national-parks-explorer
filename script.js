@@ -31,7 +31,6 @@ function parseLatitudeandLongitude(latLong) {
 }
 
 function backButtonClicked() {
-    
     $( ".js-back-button" ).click(function() {
         $('#hiking-content').addClass('hidden');
         $('#campground-content').addClass('hidden');
@@ -42,8 +41,6 @@ function backButtonClicked() {
 
 // Displays the data that was fetched from the National Parks Service API call
 function displayCampgrounds(responseJson) {
-    console.log(responseJson);
-
     $('#camping-content-header').html(`${currentParkName} Campgrounds`);
     $('#campgrounds-list').empty();
 
@@ -78,8 +75,6 @@ function getCampgrounds(currentParkCode) {
     const queryString = formatQueryParams(params);
     const url = NPS_URL + 'campgrounds?' + queryString;
     
-    console.log(url);
-
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -91,8 +86,17 @@ function getCampgrounds(currentParkCode) {
             displayCampgrounds(responseJson);
             window.scrollTo(0, 0);
         })
-        .catch(error => {
-            console.log(error.message);
+        .catch(err => {
+            $('#campgrounds-list').empty();
+
+            $('#campgrounds-list').append(`
+            <li class="center">
+                <p class="error-message">Something went wrong: ${err.message}</p>
+            </li>
+            `);
+
+            $('#detail-content').addClass('hidden');
+            $('#campground-content').removeClass('hidden');
         });
 }
 
@@ -104,8 +108,6 @@ function campgroundsButtonClicked() {
 
 // Displays the data that was fetched from the Hiking Project API call
 function displayHikingTrails(responseJson) {
-    console.log(responseJson);
-
     $('#hiking-content-header').html(`${currentParkName} Hiking Trails`);
     $('#trails-list').empty();
 
@@ -147,8 +149,6 @@ function getHikingTrails(latLong) {
     const queryString = formatQueryParams(params);
     const url = HIKING_PROJECT_URL + 'get-trails?' + queryString;
     
-    console.log(url);
-
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -160,8 +160,17 @@ function getHikingTrails(latLong) {
             displayHikingTrails(responseJson);
             window.scrollTo(0, 0);
         })
-        .catch(error => {
-            console.log(error.message);
+        .catch(err => {
+            $('#trails-list').empty();
+
+            $('#trails-list').append(`
+            <li class="center">
+                <p class="error-message">Something went wrong: ${err.message}</p>
+            </li>
+            `);
+
+            $('#detail-content').addClass('hidden');
+            $('#hiking-content').removeClass('hidden');
         });
 }
 
@@ -188,8 +197,6 @@ function getDayOfWeek(dateString) {
 
 // Displays the data that was fetched from the Weatherbit API call
 function displayWeather(responseJson) {
-    console.log(responseJson);
-
     for (let i = 0; i < responseJson.data.length; i++) {
         $('.daily-weather-container').append(`
             <div class="daily-weather">
@@ -218,8 +225,6 @@ function getParkWeather(latLong) {
     const queryString = formatQueryParams(params);
     const url = WEATHERBIT_URL + '?' + queryString;
 
-    console.log(url);
-
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -230,15 +235,15 @@ function getParkWeather(latLong) {
         .then(responseJson => {
             displayWeather(responseJson);
         })
-        .catch(error => {
-            console.log(error.message);
+        .catch(err => {
+            $('.daily-weather-container').append(`
+                <p class="error-message">Something went wrong: ${err.message}</p>
+            `);
         });
 }
 
 // Displays the data that was fetched from the National Parks Service API call
 function displayParkDetail(responseJson) {
-    console.log(responseJson);
-
     $('#detail-content').empty();
     
     $('#detail-content').append(`        
@@ -302,8 +307,6 @@ function getParkDetail(parkCodeSelected) {
     const queryString = formatQueryParams(params);
     const url = NPS_URL + 'parks?' + queryString;
 
-    // console.log(url);
-
     fetch(url)
         .then(response => {
             if (response.ok) {
@@ -319,8 +322,19 @@ function getParkDetail(parkCodeSelected) {
             getParkWeather(latLong);
             window.scrollTo(0, 0);
         })
-        .catch(error => {
-            console.log(error.message);
+        .catch(err => {
+            $('#detail-content').empty();
+    
+            $('#detail-content').append(` 
+                <p class="error-message nps-error-message center">Something went wrong: ${err.message}</p>
+            `);
+
+            $('#hero-home-screen').addClass('hidden');
+            $('#home-content').addClass('hidden');
+            $('#hiking-content').addClass('hidden');
+            $('#campground-content').addClass('hidden');
+            $('#detail-screen-heading').removeClass('hidden');
+            $('#detail-content').removeClass('hidden');
         });
 }
 
