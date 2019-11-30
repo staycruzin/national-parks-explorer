@@ -66,7 +66,7 @@ h1 {
     background: linear-gradient(
                     rgba(20,20,20, .5), 
                     rgba(20,20,20, .5)),
-                    url(assets/hero-image-1.jpeg);
+                    url(../assets/hero-image-1.jpeg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -523,7 +523,7 @@ img {
         background: linear-gradient(
             rgba(20,20,20, .5), 
             rgba(20,20,20, .5)),
-            url(assets/hero-image-1.jpeg);
+            url(../assets/hero-image-1.jpeg);
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
