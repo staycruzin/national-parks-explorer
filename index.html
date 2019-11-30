@@ -23,10 +23,10 @@
 
     <section id="detail-screen-heading" class="hidden">
         <span class="menu-button open-button" role="button" tabindex="0" aria-expanded="false" aria-controls="search">
-            <i class="fas fa-search-location fa-lg"></i>
+            <i aria-hidden="true" class="fas fa-search-location fa-lg"></i>
         </span>
         <span class="menu-button close-button" role="button" tabindex="0" aria-expanded="true" aria-controls="search">
-            <i class="fas fa-times fa-lg"></i>
+            <i aria-hidden="true" class="fas fa-times fa-lg"></i>
         </span>
 
         <a id="home-link" href="#hero-home-screen"><h1 class="center">National Parks Explorer</h1></a>
@@ -56,7 +56,7 @@
                 We provide the details so you can plan your next adventure with ease and confidence. <span>Find your new favorite National Park today.</span>
             </p>
             <form id="js-parks-form-home" class="parks-form">
-                <select id="parks-list-home" name="parks-list-home">
+                <select id="parks-list-home" name="parks-list-home" aria-label="Select a National Park">
                     <option value=""></option>
                 </select>
                 <input id="explore-button" class="button" type="submit" value="Explore">
@@ -80,16 +80,16 @@
 
     <footer class="merriweather">
         <div id="contact-links">
-            <a id="mail" href="mailto:anthonyncruz@gmail.com">
-                <i class="fas fa-envelope-square fa-2x"></i>
+            <a id="mail" href="mailto:anthonyncruz@gmail.com" aria-label="Send an E-mail to Anthony">
+                <i aria-hidden="true" class="fas fa-envelope-square fa-2x"></i>
             </a>
 
-            <a id="linkedin" href="https://www.linkedin.com/in/anthonyncruz" target="_blank">
-                <i class="fab fa-linkedin fa-2x"></i>
+            <a id="linkedin" href="https://www.linkedin.com/in/anthonyncruz" target="_blank" aria-label="Go to Anthony's LinkedIn Profile">
+                <i aria-hidden="true" class="fab fa-linkedin fa-2x"></i>
             </a>
 
-            <a id="github" href="https://github.com/staycruzin" target="_blank">
-                <i class="fab fa-github-square fa-2x"></i>
+            <a id="github" href="https://github.com/staycruzin" target="_blank" aria-label="Go to Anthony's GitHub Page">
+                <i aria-hidden="true" class="fab fa-github-square fa-2x"></i>
             </a>
         </div>
 

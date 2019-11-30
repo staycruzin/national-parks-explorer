@@ -86,7 +86,6 @@ h1 {
 #hero-home-screen h2 {
     position: relative;
     top: 20px;
-    font-weight: 400;
 }
 
 #next-link {
@@ -147,26 +146,6 @@ h1 {
 
 .button:hover {    
     opacity: 0.8;
-}
-
-footer {
-    height: 64px;
-    padding: 5px 20px;
-
-    font-size: 0.9rem;
-    color: #F4B434;
-    background-color: #222622;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-#contact-links a {
-    text-decoration: none;
-    margin: 0px 5px;
-    color: #F4B434;
 }
 
 #detail-screen-heading {
@@ -361,6 +340,27 @@ footer {
     margin: auto;
     width: max-content;
     margin-top: 20px;
+}
+
+footer {
+    height: 64px;
+    padding: 5px 20px;
+
+    font-size: 0.9rem;
+    color: #F4B434;
+    background-color: #222622;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#contact-links a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 0px 5px;
+    color: #F4B434;
 }
 
 img {
