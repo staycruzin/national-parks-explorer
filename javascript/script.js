@@ -1,20 +1,18 @@
 'use strict';
 
-const parksArray = Array.from(nationalParksData);
-
-const NPS_URL = 'https://developer.nps.gov/api/v1/';
-const HIKING_PROJECT_URL = 'https://www.hikingproject.com/data/';
-const WEATHERBIT_URL = 'https://api.weatherbit.io/v2.0/forecast/daily';
-
-const NPS_API_KEY = 'xBRqVrGeEgzB8HiOJy82A69FLrhMQgd5FSX9fIH0';
-const HIKING_PROJECT_API_KEY = '7101314-2db36463e31e0bf91b2c49919876d9dc';
-const WEATHERBIT_API_KEY = '221b43c97f2b4875a8d27a00c7c7d105';
-
-let viewportWidth = window.innerWidth;
-let latLong;
-let currentParkName;
-let currentParkCode;
-
+const appConfig = {
+    parksArray: Array.from(nationalParksData),
+    npsURL: 'https://developer.nps.gov/api/v1/',
+    hikingProjectURL: 'https://www.hikingproject.com/data/',
+    weatherbitURL: 'https://api.weatherbit.io/v2.0/forecast/daily',
+    npsApiKey: 'xBRqVrGeEgzB8HiOJy82A69FLrhMQgd5FSX9fIH0',
+    hikingProjectApiKey: '7101314-2db36463e31e0bf91b2c49919876d9dc',
+    weatherbitApiKey: '221b43c97f2b4875a8d27a00c7c7d105',
+    viewportWidth: window.innerWidth,
+    latLong: '',
+    currentParkName: '',
+    currentParkCode: ''
+};
 
 function formatQueryParams(params) {
     const queryString = Object.keys(params)
@@ -41,7 +39,7 @@ function backButtonClicked() {
 
 // Displays the data that was fetched from the National Parks Service API call
 function displayCampgrounds(responseJson) {
-    $('#camping-content-header').html(`${currentParkName} Campgrounds`);
+    $('#camping-content-header').html(`${appConfig.currentParkName} Campgrounds`);
     $('#campgrounds-list').empty();
 
     if (responseJson.data.length === 0) {
@@ -69,11 +67,11 @@ function displayCampgrounds(responseJson) {
 function getCampgrounds(currentParkCode) {
     const params = {
         parkCode: currentParkCode,
-        api_key: NPS_API_KEY
+        api_key: appConfig.npsApiKey
     }
 
     const queryString = formatQueryParams(params);
-    const url = NPS_URL + 'campgrounds?' + queryString;
+    const url = appConfig.npsURL + 'campgrounds?' + queryString;
     
     fetch(url)
         .then(response => {
@@ -102,13 +100,13 @@ function getCampgrounds(currentParkCode) {
 
 function campgroundsButtonClicked() {
     $('body').on('click', '.js-camp-button', function() {
-        getCampgrounds(currentParkCode);
+        getCampgrounds(appConfig.currentParkCode);
     });
 }
 
 // Displays the data that was fetched from the Hiking Project API call
 function displayHikingTrails(responseJson) {
-    $('#hiking-content-header').html(`${currentParkName} Hiking Trails`);
+    $('#hiking-content-header').html(`${appConfig.currentParkName} Hiking Trails`);
     $('#trails-list').empty();
 
     if (responseJson.trails.length === 0) {
@@ -143,11 +141,11 @@ function getHikingTrails(latLong) {
         lat: latitude,
         lon: longitude,
         maxDistance: 50,
-        key: HIKING_PROJECT_API_KEY
+        key: appConfig.hikingProjectApiKey
     }
 
     const queryString = formatQueryParams(params);
-    const url = HIKING_PROJECT_URL + 'get-trails?' + queryString;
+    const url = appConfig.hikingProjectURL + 'get-trails?' + queryString;
     
     fetch(url)
         .then(response => {
@@ -176,7 +174,7 @@ function getHikingTrails(latLong) {
 
 function hikingTrailsButtonClicked() {
     $('body').on('click', '.js-hike-button', function() {
-        getHikingTrails(latLong);
+        getHikingTrails(appConfig.latLong);
     });
 }
 
@@ -219,11 +217,11 @@ function getParkWeather(latLong) {
         lon: longitude,
         units: 'I',
         days: 5,
-        key: WEATHERBIT_API_KEY
+        key: appConfig.weatherbitApiKey
     }
 
     const queryString = formatQueryParams(params);
-    const url = WEATHERBIT_URL + '?' + queryString;
+    const url = appConfig.weatherbitURL + '?' + queryString;
 
     fetch(url)
         .then(response => {
@@ -297,15 +295,15 @@ function displayParkDetail(responseJson) {
 
 // Calls the National Parks Service API and fetches the relevant data for the National Park that was selected
 function getParkDetail(parkCodeSelected) {
-    currentParkCode = parkCodeSelected;
+    appConfig.currentParkCode = parkCodeSelected;
 
     const params = {
         parkCode: parkCodeSelected,
-        api_key: NPS_API_KEY
+        api_key: appConfig.npsApiKey
     }
 
     const queryString = formatQueryParams(params);
-    const url = NPS_URL + 'parks?' + queryString;
+    const url = appConfig.npsURL + 'parks?' + queryString;
 
     fetch(url)
         .then(response => {
@@ -315,11 +313,11 @@ function getParkDetail(parkCodeSelected) {
             throw new Error(response.statusText);
         })
         .then(responseJson => {
-            latLong = responseJson.data[0].latLong;
-            currentParkName = responseJson.data[0].fullName;
+            appConfig.latLong = responseJson.data[0].latLong;
+            appConfig.currentParkName = responseJson.data[0].fullName;
 
             displayParkDetail(responseJson);
-            getParkWeather(latLong);
+            getParkWeather(appConfig.latLong);
             window.scrollTo(0, 0);
         })
         .catch(err => {
@@ -341,7 +339,7 @@ function getParkDetail(parkCodeSelected) {
 // Collapses the Nav when it is open and the user clicks off of it.
 function clickedOffNav() {
     $(document).click(function(e) {
-         if (viewportWidth <= 1199 && $("#search").is(':visible')) {
+         if (appConfig.viewportWidth <= 1199 && $("#search").is(':visible')) {
               if ($(e.target).closest("#search").length === 0 && $(e.target).closest(".menu-button").length === 0) {
                    $( "#search" ).slideToggle( "slow");
                    $( ".close-button" ).hide();
@@ -371,7 +369,7 @@ function openMenuClicked() {
 
 // Adjusts the nav bar based on the viewPort width.
 function setNavBar() {
-    if (viewportWidth <= 1199) {
+    if (appConfig.viewportWidth <= 1199) {
          $(".open-button").show();
          $(".close-button").hide();
          $("#search").hide();
@@ -392,7 +390,7 @@ function viewportResized() {
 
 // Sets the initial viewportWidth and update viewportWidth whenever the viewport is resized.
 function setViewportWidth() {
-    viewportWidth = window.innerWidth;
+    appConfig.viewportWidth = window.innerWidth;
 }
 
 function homeLinkClicked() {
@@ -426,7 +424,7 @@ function watchForms() {
         const parkCodeSelected = $("#parks-list-home").val();
         
         if (parkCodeSelected !== "") {
-            if (viewportWidth <= 1199) {
+            if (appConfig.viewportWidth <= 1199) {
                 $( "#search" ).hide();
                 $( ".close-button" ).hide();
                 $( ".open-button" ).show();
@@ -440,7 +438,7 @@ function watchForms() {
         const parkCodeSelected = $("#parks-list-detail").val();
 
         if (parkCodeSelected !== "" && parkCodeSelected !== null) {
-            if (viewportWidth <= 1199) {
+            if (appConfig.viewportWidth <= 1199) {
                 $( "#search" ).slideToggle( "fast");
                 $( ".close-button" ).hide();
                 $( ".open-button" ).show();
@@ -455,11 +453,11 @@ function watchForms() {
 function populateDropdown(elementID) {
     let parksList = document.getElementById(elementID);
 
-    for (let i = 0; i < parksArray.length; i++) {
+    for (let i = 0; i < appConfig.parksArray.length; i++) {
         let option = document.createElement("option");
 
-        option.innerHTML = parksArray[i].parkName;
-        option.value = parksArray[i].parkCode;
+        option.innerHTML = appConfig.parksArray[i].parkName;
+        option.value = appConfig.parksArray[i].parkCode;
 
         parksList.appendChild(option);
     }
