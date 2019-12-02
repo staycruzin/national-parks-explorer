@@ -42,7 +42,7 @@
                     <i class="fas fa-search-location fa-lg"></i>
                     <span class="label-text merriweather">Explore A New Park:</span>
                 </label>
-                <select id="parks-list-detail" name="parks-list-detail">
+                <select id="parks-list-detail" name="parks-list-detail" aria-label="Select a National Park" aria-controls="detail-content">
                     <option value="">&nbsp;</option>
                 </select>
             </form>
@@ -62,22 +62,22 @@
                 We provide the details so you can plan your next adventure with ease and confidence. <span>Find your new favorite National Park today.</span>
             </p>
             <form id="js-parks-form-home" class="parks-form">
-                <select id="parks-list-home" name="parks-list-home" aria-label="Select a National Park">
+                <select id="parks-list-home" name="parks-list-home" aria-label="Select a National Park" aria-controls="detail-content">
                     <option value="">&nbsp;</option>
                 </select>
                 <input id="explore-button" class="button" type="submit" value="Explore">
             </form>
         </section>
 
-        <section id="detail-content" class="hidden"></section>
+        <section id="detail-content" class="hidden" aria-live="polite"></section>
 
-        <section id="hiking-content" class="hidden">
+        <section id="hiking-content" class="hidden" aria-live="polite">
             <h2 id="hiking-content-header" class="merriweather center">&nbsp;</h2>
             <ul id="trails-list"></ul>
             <button class="js-back-button back-button button" type="button">Back</button>
         </section>
 
-        <section id="campground-content" class="hidden">
+        <section id="campground-content" class="hidden" aria-live="polite">
             <h2 id="camping-content-header" class="merriweather center">&nbsp;</h2>
             <ul id="campgrounds-list"></ul>
             <button class="js-back-button back-button button" type="button">Back</button>

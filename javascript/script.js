@@ -281,8 +281,8 @@ function displayParkDetail(responseJson) {
             </div>
 
             <div class="buttons-container">
-                <button class="js-camp-button detail-button button" type="button">Campgrounds</button>
-                <button class="js-hike-button detail-button button" type="button">Hiking Trails</button>
+                <button class="js-camp-button detail-button button" type="button" aria-controls="campground-content">Campgrounds</button>
+                <button class="js-hike-button detail-button button" type="button" aria-controls="hiking-content">Hiking Trails</button>
             </div>
         </section>
     `);
